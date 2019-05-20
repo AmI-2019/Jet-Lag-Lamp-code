@@ -13,8 +13,9 @@ def get_all_user():
 
 
 def add_user(id, name, surname, address, age, sex):
-    sql = "INSERT INTO users(id,name,surname,address,age,sex) VALUES (%s,%s,%s,%s,%d,%s)", (id, name, surname, address, age, sex)
+    sql = "INSERT INTO users(id,name,surname,address,age,sex) VALUES (%s,%s,%s,%s,%d,%s)"
     connection = pymysql.connect(user="root", password="", host="localhost", database='users')
     cursor = connection.cursor()
-    cursor.execute(sql)
+    cursor.execute(sql, (id, name,surname,address,age,sex,))
+    connection.commit()
     cursor.close()

@@ -1,7 +1,6 @@
-from telegram import InlineKeyboardButton
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
-from commandHandler import start, logout, about_the_team
-
+from commandHandler import start, logout, about_the_team, login,echo
+from reply_inline_module import *
 
 # Main function definition
 def main():
@@ -11,8 +10,11 @@ def main():
     updater = Updater("650299894:AAH8mFuD7EtvY31GiOuC0OiM-m6_PphGbcY", use_context=True)
 
     updater.dispatcher.add_handler(CommandHandler('start', start))
+    updater.dispatcher.add_handler(CommandHandler('echo', echo))
+    updater.dispatcher.add_handler(CommandHandler('login', login))
     updater.dispatcher.add_handler(CommandHandler('logout', logout))
     updater.dispatcher.add_handler(CommandHandler('about_the_team', about_the_team))
+    updater.dispatcher.add_handler(CallbackQueryHandler(reply_inline))
     # not working: updater.dispatcher.add_handler(CallbackQueryHandler(replyInline))
 
     # Start the Bot

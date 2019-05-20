@@ -1,8 +1,17 @@
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, replymarkup, ReplyKeyboardMarkup, KeyboardButton
+from telegram import ChatAction
 
 # define command handlers:
 def start(update, context):
+    custom_keyboard = [[KeyboardButton('/login'), KeyboardButton('/logout')],
+                       [KeyboardButton('/about_the_team'), KeyboardButton(text='Help')], ]
+    reply_markup = ReplyKeyboardMarkup(custom_keyboard, one_time_keyboard=False, resize_keyboard=True)
+    context.bot.send_message(chat_id=update.message.chat_id,
+                             text="Let's begin!",
+                             reply_markup=reply_markup)
+
+
+def login(update, context):
     login_sing_up = [
         [InlineKeyboardButton("LOGIN", callback_data="login"),
          InlineKeyboardButton("SING UP", callback_data="singup")],
@@ -36,7 +45,7 @@ def about_the_team(update, context):
 # TODO:new command handlers
 
 '''
-def new_account():
+
 
 
 '''
