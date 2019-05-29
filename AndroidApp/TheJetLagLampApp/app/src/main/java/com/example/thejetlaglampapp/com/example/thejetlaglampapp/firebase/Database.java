@@ -49,7 +49,7 @@ public class Database {
                 });
     };
 
-    public static User getUser(String mail){
+    public static void getUser(String mail) {
         final DocumentReference docRef = getFirestoreInstance().collection("Users").document(mail);
         docRef.get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -59,6 +59,8 @@ public class Database {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
                                 Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                                User user = document.toObject(User.class);
+
                             } else {
                                 Log.d(TAG, "No such document");
                             }
@@ -67,8 +69,6 @@ public class Database {
                         }
                     }
                 });
-        //User user = docRef.get().getResult().toObject(User.class);
-        User user=null;
-        return user;
+
     }
 };

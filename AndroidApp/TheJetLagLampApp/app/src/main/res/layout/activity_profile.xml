@@ -6,4 +6,118 @@
     android:layout_height="match_parent"
     tools:context=".Profile">
 
+    <TextView
+        android:id="@+id/textView_avgSleepingTime"
+        android:layout_width="351dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="27dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView_avgDeepSleepTime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_homeAddress" />
+
+    <TextView
+        android:id="@+id/textView_avgLightSleepTime"
+        android:layout_width="351dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="98dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_modifyProfile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_avgDeepSleepTime" />
+
+    <TextView
+        android:id="@+id/textView_homeAddress"
+        android:layout_width="351dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="19dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView_avgSleepingTime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_age" />
+
+    <TextView
+        android:id="@+id/textView_avgDeepSleepTime"
+        android:layout_width="351dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView_avgLightSleepTime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_avgSleepingTime" />
+
+    <TextView
+        android:id="@+id/textView_Surname"
+        android:layout_width="351dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="24dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Name" />
+
+    <TextView
+        android:id="@+id/textView_age"
+        android:layout_width="351dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="22dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView_homeAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_email" />
+
+    <TextView
+        android:id="@+id/textView_email"
+        android:layout_width="351dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="26dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView_age"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Surname" />
+
+    <TextView
+        android:id="@+id/textView_Name"
+        android:layout_width="351dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginBottom="19dp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView_Surname"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_modifyProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="55dp"
+        android:text="Modify"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_avgLightSleepTime" />
+
+    <android.support.constraint.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="left"
+        tools:layout_editor_absoluteX="411dp" />
+
 </android.support.constraint.ConstraintLayout>

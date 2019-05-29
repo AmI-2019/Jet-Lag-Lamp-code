@@ -1,25 +1,37 @@
 package com.example.thejetlaglampapp.com.example.thejetlaglampapp.firebase;
 
-import com.google.firebase.firestore.GeoPoint;
-
 public class User {
 
     String name;
     String surname;
-    Sleep_info AVG_sleep;
     Integer age;
-    GeoPoint home_address;
-    GeoPoint hotel_location;
+    String email;
+    String home_address;
+    String hotel_address;
     Integer white_noise_preference;
+    Integer avgSleepingTimeMin;
+    Integer avgDeepSleepTimeMin;
+    Integer avgLightSleepTimeMin;
+    Integer avgAwakeTimeMin;
+    Integer avgStepDay;
 
-    public User(String name, String surname, Sleep_info AVG_sleep, Integer age, GeoPoint home_address, GeoPoint hotel_location, Integer white_noise_preference) {
+    public User() {
+
+    }
+
+    public User(String name, String surname, Integer age, String email, String home_address, String hotel_address, Integer white_noise_preference, Integer avgSleepingTimeMin, Integer avgDeepSleepTimeMin, Integer avgLightSleepTimeMin, Integer avgAwakeTimeMin, Integer avgStepDay) {
         this.name = name;
         this.surname = surname;
-        this.AVG_sleep = AVG_sleep;
         this.age = age;
+        this.email = email;
         this.home_address = home_address;
-        this.hotel_location = hotel_location;
+        this.hotel_address = hotel_address;
         this.white_noise_preference = white_noise_preference;
+        this.avgSleepingTimeMin = avgSleepingTimeMin;
+        this.avgDeepSleepTimeMin = avgDeepSleepTimeMin;
+        this.avgLightSleepTimeMin = avgLightSleepTimeMin;
+        this.avgAwakeTimeMin = avgAwakeTimeMin;
+        this.avgStepDay = avgStepDay;
     }
 
     public String getName() {
@@ -38,14 +50,6 @@ public class User {
         this.surname = surname;
     }
 
-    public Sleep_info getAVG_sleep() {
-        return AVG_sleep;
-    }
-
-    public void setAVG_sleep(Sleep_info AVG_sleep) {
-        this.AVG_sleep = AVG_sleep;
-    }
-
     public Integer getAge() {
         return age;
     }
@@ -54,20 +58,28 @@ public class User {
         this.age = age;
     }
 
-    public GeoPoint getHome_address() {
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getHome_address() {
         return home_address;
     }
 
-    public void setHome_address(GeoPoint home_address) {
+    public void setHome_address(String home_address) {
         this.home_address = home_address;
     }
 
-    public GeoPoint getHotel_location() {
-        return hotel_location;
+    public String getHotel_address() {
+        return hotel_address;
     }
 
-    public void setHotel_location(GeoPoint hotel_location) {
-        this.hotel_location = hotel_location;
+    public void setHotel_address(String hotel_address) {
+        this.hotel_address = hotel_address;
     }
 
     public Integer getWhite_noise_preference() {
@@ -76,5 +88,45 @@ public class User {
 
     public void setWhite_noise_preference(Integer white_noise_preference) {
         this.white_noise_preference = white_noise_preference;
+    }
+
+    public Integer getAvgSleepingTimeMin() {
+        return avgSleepingTimeMin;
+    }
+
+    public void setAvgSleepingTimeMin(Integer avgSleepingTimeMin) {
+        this.avgSleepingTimeMin = avgSleepingTimeMin;
+    }
+
+    public Integer getAvgDeepSleepTimeMin() {
+        return avgDeepSleepTimeMin;
+    }
+
+    public void setAvgDeepSleepTimeMin(Integer avgDeepSleepTimeMin) {
+        this.avgDeepSleepTimeMin = avgDeepSleepTimeMin;
+    }
+
+    public Integer getAvgLightSleepTimeMin() {
+        return avgLightSleepTimeMin;
+    }
+
+    public void setAvgLightSleepTimeMin(Integer avgLightSleepTimeMin) {
+        this.avgLightSleepTimeMin = avgLightSleepTimeMin;
+    }
+
+    public Integer getAvgAwakeTimeMin() {
+        return avgAwakeTimeMin;
+    }
+
+    public void setAvgAwakeTimeMin(Integer avgAwakeTimeMin) {
+        this.avgAwakeTimeMin = avgAwakeTimeMin;
+    }
+
+    public Integer getAvgStepDay() {
+        return avgStepDay;
+    }
+
+    public void setAvgStepDay(Integer avgStepDay) {
+        this.avgStepDay = avgStepDay;
     }
 };

@@ -150,8 +150,7 @@ public class MainActivity extends AppCompatActivity {
                 .setData(builder.build());
         startActivity(intent);
 
-        //Intent intent_DailyPlan = new Intent(MainActivity.this, DailyPlan.class);
-        //startActivity(intent_DailyPlan);
+
     }
 
 }

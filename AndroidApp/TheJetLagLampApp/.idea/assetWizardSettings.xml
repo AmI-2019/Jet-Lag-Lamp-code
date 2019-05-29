@@ -64,12 +64,9 @@
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="ffffff" />
                                       <entry key="backgroundLayerName" value="logo_background" />
-                                      <entry key="foregroundImage" value="C:\Users\fabio\AndroidStudioProjects\TheJetLagLampApp\Images\Logo.png" />
+                                      <entry key="foregroundImage" value="C:\Users\fabio\Desktop\Jet-Lag-Lamp\Jet-Lag-Lamp-code\AndroidApp\TheJetLagLampApp\Images\App_Logo.png" />
                                       <entry key="foregroundLayerName" value="logo_foreground" />
-                                      <entry key="legacyIconShape" value="CIRCLE" />
-                                      <entry key="outputName" value="logo_JLL" />
-                                      <entry key="previewDensity" value="XXHIGH" />
-                                      <entry key="showGrid" value="true" />
+                                      <entry key="outputName" value="logo_jll" />
                                     </map>
                                   </option>
                                 </PersistentState>
