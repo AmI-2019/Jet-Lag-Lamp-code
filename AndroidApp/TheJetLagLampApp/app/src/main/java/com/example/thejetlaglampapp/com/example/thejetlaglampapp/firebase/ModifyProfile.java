@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.thejetlaglampapp.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -63,6 +64,7 @@ public class ModifyProfile extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Log.d(TAG, "DocumentSnapshot successfully updated!");
+                        Toast.makeText(getApplicationContext(), "Profile updated", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

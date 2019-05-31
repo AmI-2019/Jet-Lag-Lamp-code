@@ -1,20 +1,16 @@
 package com.example.thejetlaglampapp;
 
 import android.Manifest;
-import android.content.ContentUris;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.CalendarContract;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-
-import java.util.Date;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -112,7 +108,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
     //Open function definitions
+    private void openDailyPlanActivity() {
+        Intent intent_DailyPlan=new Intent(MainActivity.this,DailyPlan.class);
+        startActivity(intent_DailyPlan);
+    }
     private void openSingInActivity(){
             Intent intent_SigIn=new Intent(MainActivity.this, GoogleSingInActivity.class);
             startActivity(intent_SigIn);
@@ -138,19 +140,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent_Settings = new Intent(MainActivity.this, Settings.class);
         startActivity(intent_Settings);
     }
-    private void openDailyPlanActivity() {
-        // A date-time specified in milliseconds since the epoch.
-        Date date= new Date();
-        long startMillis = date.getTime();
 
-        Uri.Builder builder = CalendarContract.CONTENT_URI.buildUpon();
-        builder.appendPath("time");
-        ContentUris.appendId(builder, startMillis);
-        Intent intent = new Intent(Intent.ACTION_VIEW)
-                .setData(builder.build());
-        startActivity(intent);
-
-
-    }
 
 }

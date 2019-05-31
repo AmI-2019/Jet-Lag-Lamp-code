@@ -7,4 +7,40 @@
     tools:context=".DailyPlan">
 
 
+    <Button
+        android:id="@+id/btn_OpernCalendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="73dp"
+        android:text="Open Calendar"
+        android:textColor="#2196F3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_explain"
+        android:layout_width="277dp"
+        android:layout_height="182dp"
+        android:layout_marginBottom="72dp"
+        android:gravity="clip_horizontal|center"
+        android:text="Pressing the button below the system will suggest you a relax break in your current day.\n The suggestion is based on your daily appointments and it is long enough to make you feel better.\n Feel free to change the parameters of the suggestion if you want!"
+        app:layout_constraintBottom_toTopOf="@+id/btn_AddSuggestions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btn_AddSuggestions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="92dp"
+        android:text="Add Suggestions"
+        android:textColor="#D51DA1"
+        app:layout_constraintBottom_toTopOf="@+id/btn_OpernCalendar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
