@@ -109,12 +109,13 @@ def set_schedule(dep_place, arr_place, days):
             i += 1
             c += 1
 
-    a = 0
-    print('HOME:')
-    for x in time_list:
-        print(a, x)
-        a += 1
+    # a = 0
+    # print('HOME:')
+    # for x in time_list:
+    #     print(a, x)
+    #     a += 1
 
+    return time_list
     # TODO: the function must return a LIST containing dictionaries with sleep_time and wake_time for each day
     # Now it's time to adjust the schedule: read all the appointments
     # and set the alarm clock according to them

@@ -5,10 +5,6 @@ from firebase_admin import firestore
 
 cred = credentials.Certificate("thejetlaglampapp-1-firebase-adminsdk-7oj9c-d795dc3925.json")
 default_app = firebase_admin.initialize_app(cred)
-schedule = {
-    u'sleep_time': u'22:00',
-    u'wake_time': u'07:00'
-}
 
 db = firestore.client()
 
@@ -22,10 +18,9 @@ for user in users:
 
     dep_zone = user.to_dict().get('dep_zone')
     arr_zone = user.to_dict().get('arr_zone')
-    print(dep_zone, arr_zone)
     trip_duration = int(user.to_dict().get('trip_duration'))
-    set_schedule(dep_zone, arr_zone, trip_duration)
+    time_schedule = set_schedule(dep_zone, arr_zone, trip_duration)
     n = 0
-    while n < int(user.to_dict().get('trip_duration')):
+    for schedule in time_schedule:
         schedule_ref.document(u'day_{}'.format(n)).set(schedule)
         n += 1
