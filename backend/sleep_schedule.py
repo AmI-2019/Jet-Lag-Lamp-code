@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 from pytz import timezone
 
+
 def set_schedule(dep_place, arr_place, days):
 
     myAppointments = [{"name": "wash the car", "start_time": "10/06/2019 09:00", "end_time": "10/06/2019 09:45"},
@@ -9,8 +10,6 @@ def set_schedule(dep_place, arr_place, days):
                       {"name": "go to post office", "start_time": "10/06/2019 15:00", "end_time": "10/06/2019 16:00"},
                       {"name": "dinner with Theresa", "start_time": "10/06/2019 19:15", "end_time": "10/06/2019 21:30"},
                       {"name": "beer with Donald", "start_time": "10/06/2019 23:15", "end_time": "11/06/2019 0:30"}]
-
-    print("My appointments:")
 
     # Defining home arrival time zones + UTC
     dep_zone = timezone(dep_place)
@@ -32,8 +31,8 @@ def set_schedule(dep_place, arr_place, days):
     direction = ''
     time_list = []
 
-    print("Home sleeping time: ", utc_sleep_time.strftime("%H:%M %Z"))
-    print("Home wake up time: ", utc_wake_time.strftime("%H:%M %Z"))
+    # print("Home sleeping time: ", utc_sleep_time.strftime("%H:%M %Z"))
+    # print("Home wake up time: ", utc_wake_time.strftime("%H:%M %Z"))
 
     # Difference between the time zones
     diff_zone = datetime.utcoffset(arr_sleep_time) - datetime.utcoffset(dep_sleep_time)
@@ -45,10 +44,12 @@ def set_schedule(dep_place, arr_place, days):
     diff_zone = abs(diff_zone)
 
     # Computing a sleeping schedule without appointments on the calendar
-    print("Suggested sleeping schedule:")
-    print("Day 0 - Home:")
-    print("Go to sleep at: ", dep_sleep_time.strftime("%H:%M"))
-    print("Wake up at: ", dep_wake_time.strftime("%H:%M"), "\n")
+    # print("Suggested sleeping schedule:")
+    # print("Day 0 - Home:")
+    # print("Go to sleep at: ", dep_sleep_time.strftime("%H:%M"))
+    # print("Wake up at: ", dep_wake_time.strftime("%H:%M"), "\n")
+    time_list.append({"sleep_time": dep_sleep_time.strftime("%d/%m/%Y %H:%M"),
+                      "wake_time": dep_wake_time.strftime("%d/%m/%Y %H:%M")})
 
     # i = timedelta(days=0, hours=0, minutes=0)
     i = 0
@@ -72,12 +73,13 @@ def set_schedule(dep_place, arr_place, days):
                     mySleep = myWake - timedelta(hours=7)
                     break
 
-            print("Day %s:" % c)
-            print("Go to sleep at: ", mySleep.strftime("%d/%m/%Y %H:%M"))
-            print("Wake up at: ", myWake.strftime("%d/%m/%Y %H:%M"), "\n")
+            # print("Day %s:" % c)
+            # print("Go to sleep at: ", mySleep.strftime("%d/%m/%Y %H:%M"))
+            # print("Wake up at: ", myWake.strftime("%d/%m/%Y %H:%M"), "\n")
             # print("Go to sleep at: ", arr_sleep_time.strftime("%d/%m/%Y %H:%M"))
             # print("Wake up at: ", arr_wake_time.strftime("%d/%m/%Y %H:%M"), "\n")
-            time_list.append({"sleep_time": arr_sleep_time.strftime("%H:%M"), "wake:time": arr_wake_time.strftime("%H:%M")})
+            time_list.append({"sleep_time": arr_sleep_time.strftime("%d/%m/%Y %H:%M"),
+                              "wake:time": arr_wake_time.strftime("%d/%m/%Y %H:%M")})
             arr_sleep_time = arr_sleep_time + timedelta(days=1)
             arr_wake_time = arr_wake_time + timedelta(days=1)
             # i += timedelta(hours=1)
@@ -89,24 +91,31 @@ def set_schedule(dep_place, arr_place, days):
             for x in myAppointments:
                 start_time = datetime.strptime(x["start_time"], "%d/%m/%Y %H:%M")
                 start_time = arr_zone.localize(start_time)
-                print(start_time)
+                # print(start_time)
                 if arr_sleep_time < start_time < arr_wake_time:
                     # Start the procedure for anticipating the alarm clock
                     # Set the alarm 1 hour before the beginning of the event
                     arr_wake_time = start_time - timedelta(hours=1)
                     break
 
-            print("Day %s:" % c)
-            print("Go to sleep at: ", arr_sleep_time.strftime("%d/%m/%Y %H:%M"))
-            print("Wake up at: ", arr_wake_time.strftime("%d/%m/%Y %H:%M"), "\n")
-            time_list.append({"sleep_time": arr_sleep_time.strftime("%H:%M"), "wake:time": arr_wake_time.strftime("%H:%M")})
+            # print("Day %s:" % c)
+            # print("Go to sleep at: ", arr_sleep_time.strftime("%d/%m/%Y %H:%M"))
+            # print("Wake up at: ", arr_wake_time.strftime("%d/%m/%Y %H:%M"), "\n")
+            time_list.append({"sleep_time": arr_sleep_time.strftime("%d/%m/%Y %H:%M"),
+                              "wake:time": arr_wake_time.strftime("%d/%m/%Y %H:%M")})
             arr_sleep_time = arr_sleep_time + timedelta(days=1)
             arr_wake_time = arr_wake_time + timedelta(days=1)
             # i += timedelta(days=1)
             i += 1
             c += 1
 
+    a = 0
+    print('HOME:')
+    for x in time_list:
+        print(a, x)
+        a += 1
 
+    # TODO: the function must return a LIST containing dictionaries with sleep_time and wake_time for each day
     # Now it's time to adjust the schedule: read all the appointments
     # and set the alarm clock according to them
 
