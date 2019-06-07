@@ -1,8 +1,13 @@
 package com.example.thejetlaglampapp;
 
 import android.Manifest;
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,6 +16,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -18,10 +26,13 @@ public class MainActivity extends AppCompatActivity {
         Button btn_SingIn;
         Button btn_DailyPlan;
         Button btn_Hotels;
-        Button btn_Settings;
+        Button btn_TravelInfo;
         Button btn_Website;
         Button btn_AboutUs;
         Button btn_ViewProfile;
+        private String mail;
+        protected LocationManager locationManager;
+        protected LocationListener locationListener;
 
     private static final String[] GPS_PERM = {
             Manifest.permission.ACCESS_FINE_LOCATION
@@ -32,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String[] WRITECALENDAR_PERM = {
             Manifest.permission.WRITE_CALENDAR
     };
+
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -50,19 +62,25 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+        mail=FirebaseAuth.getInstance().getCurrentUser().getEmail();
+
+        if (mail==null){
+            openSingInActivity();
+            mail=FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        }
+
         setContentView(R.layout.activity_main);
         // Button definitions
         btn_SingIn=findViewById(R.id.btn_SingIn);
         btn_Hotels=findViewById(R.id.btn_Hotels);
         btn_DailyPlan=findViewById(R.id.btn_DailyPlan);
-        btn_Settings=findViewById(R.id.btn_Settings);
+        btn_TravelInfo =findViewById(R.id.btn_TravelInfo);
         btn_Website=findViewById(R.id.btn_Website);
         btn_AboutUs=findViewById(R.id.btn_AboutUs);
         btn_ViewProfile=findViewById(R.id.btn_ViewProfile);
 
-        //------------------------------------------------------------------------------------------
 
-        //------------------------------------------------------------------------------------------
+        scheduleJob();
 
         //OnClickListener init
         btn_SingIn.setOnClickListener(new View.OnClickListener() {
@@ -101,13 +119,36 @@ public class MainActivity extends AppCompatActivity {
                 openDailyPlanActivity();
             }
         });
-        btn_Settings.setOnClickListener(new View.OnClickListener() {
+        btn_TravelInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openSettingsActivity();
+                openTravelInfoActivity();
             }
         });
+
     }
+
+    //------------------------------------------------------------------------------------------
+    public void scheduleJob(){
+        ComponentName componentName = new ComponentName(this, MyJobService.class);
+        JobInfo info = new JobInfo.Builder(123, componentName)
+                .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
+                .setPersisted(true)
+                .setPeriodic(15 * 60 * 1000)
+                .build();
+
+        JobScheduler scheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
+        int resultCode = scheduler.schedule(info);
+        if (resultCode == JobScheduler.RESULT_SUCCESS) {
+            Toast.makeText(this, "Job schedulato con successo", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void cancelJob() {
+        JobScheduler scheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
+        scheduler.cancel(123);
+    }
+    //------------------------------------------------------------------------------------------
 
 
     //Open function definitions
@@ -136,10 +177,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent_Hotels = new Intent(MainActivity.this, Hotels.class);
         startActivity(intent_Hotels);
     }
-    private void openSettingsActivity() {
-        Intent intent_Settings = new Intent(MainActivity.this, Settings.class);
-        startActivity(intent_Settings);
+    private void openTravelInfoActivity() {
+        Intent intent_TravelInfo = new Intent(MainActivity.this, TravelInfo.class);
+        startActivity(intent_TravelInfo);
     }
+
 
 
 }

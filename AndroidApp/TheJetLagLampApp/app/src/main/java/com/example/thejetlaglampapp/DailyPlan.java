@@ -11,8 +11,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.thejetlaglampapp.com.example.thejetlaglampapp.firebase.Database;
+import com.example.thejetlaglampapp.com.example.thejetlaglampapp.firebase.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
@@ -27,6 +29,7 @@ import java.util.Date;
 public class DailyPlan extends AppCompatActivity {
     Button btn_OpenCalendar;
     Button btn_AddSuggestions;
+    TextView textView_todaySleepSchedule;
 
     private static final String TAG = Profile.class.getSimpleName();
     String mail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
@@ -38,7 +41,7 @@ public class DailyPlan extends AppCompatActivity {
 
         btn_OpenCalendar=findViewById(R.id.btn_OpernCalendar);
         btn_AddSuggestions=findViewById(R.id.btn_AddSuggestions);
-
+        textView_todaySleepSchedule=findViewById(R.id.textView_todaySleepSchedule);
 
 
         btn_OpenCalendar.setOnClickListener(new View.OnClickListener() {
@@ -56,8 +59,42 @@ public class DailyPlan extends AppCompatActivity {
 
             }
         });
+        new AsyncTask<Void, Void, Boolean>() {
+
+            @Override
+            protected Boolean doInBackground(Void... voids) {
+
+                final DocumentReference docRef = Database.getFirestoreInstance().collection("Users").document(mail);
+
+                docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                User user = document.toObject(User.class);
+                                System.out.println(user);
+                                textView_todaySleepSchedule.setText("Based on your sleeping habit today you should go to sleep at: \t"+ user.getTodaySleepSchedule()+"\n tomorrow you should wake up at: \t"+user.getTomorrowWakeUpSchedule());
+                            } else {
+                                Log.d(TAG, "No such document");
+                            }
+                        } else {
+                            Log.d(TAG, "get failed with ", task.getException());
+                        }
+
+                    }
+
+
+                });
+                return true;
+
+            }
+
+        }.execute();
 
     }
+
 
     private boolean addSuggestionsToCalendar() {
 

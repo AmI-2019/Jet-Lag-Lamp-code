@@ -18,7 +18,6 @@ import com.google.firebase.firestore.DocumentReference;
 public class ModifyProfile extends AppCompatActivity {
     private static final String TAG = ModifyProfile.class.getSimpleName();
     Button btn_UpdateProfile;
-    User user;
     private String mail;
 
     @Override
@@ -44,9 +43,8 @@ public class ModifyProfile extends AppCompatActivity {
         EditText editText_email = findViewById(R.id.editText_email);
         EditText editText_age = findViewById(R.id.editText_age);
         EditText editText_homeAddress = findViewById(R.id.editText_homeAddress);
-        EditText editText_avgSleepingTime = findViewById(R.id.editText_avgSleepingTime);
-        EditText editText_avgDeepSleepTime = findViewById(R.id.editText_avgDeepSleepTime);
-        EditText editText_avgLightSleepTime = findViewById(R.id.editText_avgLightSleepTime);
+        EditText editText_typicalBedTime = findViewById(R.id.editText_typicalBedTime);
+        EditText editText_typicalWakeUpTime = findViewById(R.id.editText_typicalWakeUpTime);
 
 
         DocumentReference docRef = Database.getFirestoreInstance().collection("Users").document(mail);
@@ -55,9 +53,8 @@ public class ModifyProfile extends AppCompatActivity {
                 "email", editText_email.getText().toString(),
                 "age", Integer.parseInt(editText_age.getText().toString()),
                 "home_address", editText_homeAddress.getText().toString(),
-                "avgDeepSleepTimeMin", Integer.parseInt(editText_avgDeepSleepTime.getText().toString()),
-                "avgLightSleepTimeMin", Integer.parseInt(editText_avgLightSleepTime.getText().toString()),
-                "avgSleepingTimeMin", Integer.parseInt(editText_avgSleepingTime.getText().toString())
+                "typicalBedTime", editText_typicalBedTime.getText().toString(),
+                "typicalWakeUpTime", editText_typicalWakeUpTime.getText().toString()
 
         )
                 .addOnSuccessListener(new OnSuccessListener<Void>() {

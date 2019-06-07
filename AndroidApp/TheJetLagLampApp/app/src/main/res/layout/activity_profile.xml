@@ -7,28 +7,16 @@
     tools:context=".Profile">
 
     <TextView
-        android:id="@+id/textView_avgSleepingTime"
+        android:id="@+id/textView_typicalWakeUpTime"
         android:layout_width="351dp"
         android:layout_height="0dp"
         android:layout_marginBottom="27dp"
         android:text=""
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView_avgDeepSleepTime"
+        app:layout_constraintBottom_toTopOf="@+id/textView_typicalBedTime"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_homeAddress" />
-
-    <TextView
-        android:id="@+id/textView_avgLightSleepTime"
-        android:layout_width="351dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="98dp"
-        android:text=""
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_modifyProfile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_avgDeepSleepTime" />
 
     <TextView
         android:id="@+id/textView_homeAddress"
@@ -37,22 +25,23 @@
         android:layout_marginBottom="19dp"
         android:text=""
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView_avgSleepingTime"
+        app:layout_constraintBottom_toTopOf="@+id/textView_typicalWakeUpTime"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_age" />
 
     <TextView
-        android:id="@+id/textView_avgDeepSleepTime"
+        android:id="@+id/textView_typicalBedTime"
         android:layout_width="351dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:text=""
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView_avgLightSleepTime"
+        app:layout_constraintBottom_toTopOf="@+id/btn_modifyProfile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_avgSleepingTime" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_typicalWakeUpTime" />
 
     <TextView
         android:id="@+id/textView_Surname"
@@ -110,8 +99,7 @@
         android:text="Modify"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_avgLightSleepTime" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <android.support.constraint.Barrier
         android:id="@+id/barrier"

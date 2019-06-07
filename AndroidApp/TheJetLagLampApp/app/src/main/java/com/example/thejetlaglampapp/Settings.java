@@ -12,13 +12,14 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 
-public class AdditionalInfo extends AppCompatActivity {
+public class Settings extends AppCompatActivity {
     Button btn_UpdateAdditionalInfo;
     private String mail;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_additionalinfo);
+        setContentView(R.layout.activity_settings);
         mail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
         btn_UpdateAdditionalInfo.setOnClickListener(new View.OnClickListener() {
             @Override

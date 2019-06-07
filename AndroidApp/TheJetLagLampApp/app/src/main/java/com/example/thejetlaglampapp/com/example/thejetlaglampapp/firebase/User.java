@@ -9,29 +9,32 @@ public class User {
     String home_address;
     String hotel_address;
     Integer white_noise_preference;
-    Integer avgSleepingTimeMin;
-    Integer avgDeepSleepTimeMin;
-    Integer avgLightSleepTimeMin;
-    Integer avgAwakeTimeMin;
+    String typicalBedTime;
+    String typicalWakeUpTime;
     Integer avgStepDay;
+    String tomorrowWakeUpSchedule;
+    String todaySleepSchedule;
+
+
 
     public User() {
 
     }
 
-    public User(String name, String surname, Integer age, String email, String home_address, String hotel_address, Integer white_noise_preference, Integer avgSleepingTimeMin, Integer avgDeepSleepTimeMin, Integer avgLightSleepTimeMin, Integer avgAwakeTimeMin, Integer avgStepDay) {
-        this.name = name;
-        this.surname = surname;
-        this.age = age;
-        this.email = email;
-        this.home_address = home_address;
-        this.hotel_address = hotel_address;
-        this.white_noise_preference = white_noise_preference;
-        this.avgSleepingTimeMin = avgSleepingTimeMin;
-        this.avgDeepSleepTimeMin = avgDeepSleepTimeMin;
-        this.avgLightSleepTimeMin = avgLightSleepTimeMin;
-        this.avgAwakeTimeMin = avgAwakeTimeMin;
-        this.avgStepDay = avgStepDay;
+    public String getTomorrowWakeUpSchedule() {
+        return tomorrowWakeUpSchedule;
+    }
+
+    public void setTomorrowWakeUpSchedule(String tomorrowWakeUpSchedule) {
+        this.tomorrowWakeUpSchedule = tomorrowWakeUpSchedule;
+    }
+
+    public String getTodaySleepSchedule() {
+        return todaySleepSchedule;
+    }
+
+    public void setTodaySleepSchedule(String todaySleepSchedule) {
+        this.todaySleepSchedule = todaySleepSchedule;
     }
 
     public String getName() {
@@ -90,36 +93,20 @@ public class User {
         this.white_noise_preference = white_noise_preference;
     }
 
-    public Integer getAvgSleepingTimeMin() {
-        return avgSleepingTimeMin;
+    public String getTypicalBedTime() {
+        return typicalBedTime;
     }
 
-    public void setAvgSleepingTimeMin(Integer avgSleepingTimeMin) {
-        this.avgSleepingTimeMin = avgSleepingTimeMin;
+    public void setTypicalBedTime(String typicalBedTime) {
+        this.typicalBedTime = typicalBedTime;
     }
 
-    public Integer getAvgDeepSleepTimeMin() {
-        return avgDeepSleepTimeMin;
+    public String getTypicalWakeUpTime() {
+        return typicalWakeUpTime;
     }
 
-    public void setAvgDeepSleepTimeMin(Integer avgDeepSleepTimeMin) {
-        this.avgDeepSleepTimeMin = avgDeepSleepTimeMin;
-    }
-
-    public Integer getAvgLightSleepTimeMin() {
-        return avgLightSleepTimeMin;
-    }
-
-    public void setAvgLightSleepTimeMin(Integer avgLightSleepTimeMin) {
-        this.avgLightSleepTimeMin = avgLightSleepTimeMin;
-    }
-
-    public Integer getAvgAwakeTimeMin() {
-        return avgAwakeTimeMin;
-    }
-
-    public void setAvgAwakeTimeMin(Integer avgAwakeTimeMin) {
-        this.avgAwakeTimeMin = avgAwakeTimeMin;
+    public void setTypicalWakeUpTime(String typicalWakeUpTime) {
+        this.typicalWakeUpTime = typicalWakeUpTime;
     }
 
     public Integer getAvgStepDay() {
@@ -129,4 +116,4 @@ public class User {
     public void setAvgStepDay(Integer avgStepDay) {
         this.avgStepDay = avgStepDay;
     }
-};
+}

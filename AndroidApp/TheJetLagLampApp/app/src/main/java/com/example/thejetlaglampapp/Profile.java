@@ -40,9 +40,8 @@ public class Profile extends AppCompatActivity {
             TextView textView_email = (TextView) findViewById(R.id.textView_email);
             TextView textView_age = (TextView) findViewById(R.id.textView_age);
             TextView textView_homeAddress = (TextView) findViewById(R.id.textView_homeAddress);
-            TextView textView_avgSleepingTime = (TextView) findViewById(R.id.textView_avgSleepingTime);
-            TextView textView_avgDeepSleepTime = (TextView) findViewById(R.id.textView_avgDeepSleepTime);
-            TextView textView_avgLightSleepTime = (TextView) findViewById(R.id.textView_avgLightSleepTime);
+            TextView textView_typicalBedTime = (TextView) findViewById(R.id.textView_typicalWakeUpTime);
+            TextView textView_typicalWakeUpTime = (TextView) findViewById(R.id.textView_typicalBedTime);
 
 
             @Override
@@ -66,9 +65,8 @@ public class Profile extends AppCompatActivity {
                                 textView_email.setText("Email: " + user.getEmail());
                                 textView_age.setText("Age: " + Integer.toString(user.getAge()));
                                 textView_homeAddress.setText("Home address: " + user.getHome_address());
-                                textView_avgSleepingTime.setText("AVG sleeping time (min): " + Integer.toString(user.getAvgSleepingTimeMin()));
-                                textView_avgDeepSleepTime.setText("AVG deep sleep time (min): " + Integer.toString(user.getAvgDeepSleepTimeMin()));
-                                textView_avgLightSleepTime.setText("AVG light sleep time (min): " + Integer.toString(user.getAvgLightSleepTimeMin()));
+                                textView_typicalBedTime.setText("Typical Bed Time: " + user.getTypicalBedTime());
+                                textView_typicalWakeUpTime.setText("Typical Wake Up Time: " + user.getTypicalWakeUpTime());
                             } else {
                                 Log.d(TAG, "No such document");
                             }
