@@ -57,7 +57,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.778"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Settings"
+        app:layout_constraintTop_toBottomOf="@+id/btn_TravelInfo"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
@@ -110,7 +110,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_DailyPlan" />
 
     <Button
-        android:id="@+id/btn_Settings"
+        android:id="@+id/btn_TravelInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -118,7 +118,7 @@
         android:layout_marginTop="52dp"
         android:layout_marginEnd="76dp"
         android:layout_marginRight="76dp"
-        android:text="Settings"
+        android:text="Travel Info"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -126,16 +126,15 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="268dp"
-        android:layout_height="270dp"
+        android:layout_width="294dp"
+        android:layout_height="205dp"
         android:layout_marginStart="36dp"
         android:layout_marginLeft="36dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="356dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.385"
+        app:layout_constraintHorizontal_bias="0.301"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/logo_foreground" />
