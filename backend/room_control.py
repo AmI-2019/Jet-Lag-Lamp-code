@@ -41,16 +41,23 @@ for user in users:
         print("Sleep time: {}".format(datetime.strftime(day.get('sleep_time'), "%d/%m/%Y %H:%M")))
         print("Wake time: {}".format(datetime.strftime(day.get('wake_time'), "%d/%m/%Y %H:%M")))
         if day.get('sleep_time') < datetime.now() < day.get('wake_time'):
-            # The user is sleeping
+            # The user is sleeping, play white noise if requested
             print("HELLO!!!")
             sleep(1)
 
         if day.get('sleep_time') < datetime.now() < day.get('sleep_time') + day.get('sleep_delta')/2:
             # The room must be DARK
             print("HELLO DARKNESS")
+
         elif day.get('sleep_time') + day.get('sleep_delta')/2 < datetime.now() < day.get('wake_time'):
             # The room must be LIT, open the curtains 20-30 min before the sunset
             print("HELLO LIGHT")
+
+        if datetime.now() == day.get('wake_time'):
+            # The user must wake up! Play alarm clock tone
+            print("WAKE UP")
+
+
 
         n += 1
 
