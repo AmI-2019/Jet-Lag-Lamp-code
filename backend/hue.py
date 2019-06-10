@@ -191,3 +191,8 @@ if __name__ == '__main__':
     sun_rise(t)
 
 
+
+
+def mix_col(col):
+    if col==1:
+        46920
