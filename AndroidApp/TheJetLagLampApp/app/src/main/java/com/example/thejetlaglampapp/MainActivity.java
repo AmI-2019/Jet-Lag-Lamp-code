@@ -1,9 +1,6 @@
 package com.example.thejetlaglampapp;
 
 import android.Manifest;
-import android.app.job.JobInfo;
-import android.app.job.JobScheduler;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.LocationListener;
@@ -16,7 +13,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -80,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         btn_ViewProfile=findViewById(R.id.btn_ViewProfile);
 
 
-        scheduleJob();
+        //scheduleJob();
 
         //OnClickListener init
         btn_SingIn.setOnClickListener(new View.OnClickListener() {
@@ -129,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //------------------------------------------------------------------------------------------
-    public void scheduleJob(){
+   /* public void scheduleJob(){
         ComponentName componentName = new ComponentName(this, MyJobService.class);
         JobInfo info = new JobInfo.Builder(123, componentName)
                 .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
@@ -147,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
     public void cancelJob() {
         JobScheduler scheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
         scheduler.cancel(123);
-    }
+    }*/
     //------------------------------------------------------------------------------------------
 
 

@@ -1,8 +1,6 @@
 package com.example.thejetlaglampapp;
 
-import android.content.ContentUris;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.CalendarContract;
@@ -159,17 +157,7 @@ public class DailyPlan extends AppCompatActivity {
     }
 
     private void openCalendar() {
-        // A date-time specified in milliseconds since the epoch.
-        Date date= new Date();
-        long startMillis = date.getTime();
-
-        Uri.Builder builder = CalendarContract.CONTENT_URI.buildUpon();
-        builder.appendPath("time");
-        ContentUris.appendId(builder, startMillis);
-        Intent intent = new Intent(Intent.ACTION_VIEW)
-                .setData(builder.build());
-        startActivity(intent);
-
-
+            Intent intent_Calendar = new Intent(DailyPlan.this, CalendarApp.class);
+            startActivity(intent_Calendar);
     }
 }
