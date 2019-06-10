@@ -195,4 +195,7 @@ if __name__ == '__main__':
 
 def mix_col(col):
     if col==1:
-        46920
+        return 46920
+
+    else if col==0:
+        return
