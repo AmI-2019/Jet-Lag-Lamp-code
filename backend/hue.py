@@ -54,7 +54,7 @@ def switch_on(color,intensity):
     username = "-yBmYpKxa2bMpOgle8ZOFBodBuruXHvvQPagKHQI"
     # if you are using the emulator, the username is:
     #username = 'newdeveloper'      #use with the emulator
-
+    light = "12"            #numero of the light we are using
     # lights URL
     lights_url = base_url + '/api/' + username + '/lights/'
 
@@ -62,13 +62,14 @@ def switch_on(color,intensity):
     all_the_lights = requests.get(lights_url).json()
     if type(all_the_lights) is dict:
         # iterate over the Hue lights, turn them on with the color loop effect
-        for light in all_the_lights:
-            url_to_call = lights_url + light + '/state'
+        #for light in all_the_lights:           #activate this loop to switch all lights
+        url_to_call = lights_url + light + '/state'
             # body = {'on': True, 'effect': 'colorloop'}
             # to set the red color
-            body = {'on': True, "hue": color, "bri": intensity}
+        #body = {'on': True, "hue": color, "bri": intensity}
+        body = {'on': True, "xy": color, "bri": intensity}
             # more colors: https://www.developers.meethue.com/documentation/core-concepts
-            requests.put(url_to_call, json=body)
+        requests.put(url_to_call, json=body)
     else:
         print('Error:', all_the_lights[0]['error'])
 
@@ -82,16 +83,16 @@ def switch_off():
     username = "-yBmYpKxa2bMpOgle8ZOFBodBuruXHvvQPagKHQI"
     # if you are using the emulator, the username is:
     #username = 'newdeveloper'      #use with the emulator
-
+    light = "12"
     # lights URL
     lights_url = base_url + '/api/' + username + '/lights/'
 
     # get the Hue lights (as JSON)
     all_the_lights = requests.get(lights_url).json()
-    for light in all_the_lights:
-        url_to_call = lights_url + light + '/state'
-        body = {'on': False}
-        requests.put(url_to_call, json=body)
+    #for light in all_the_lights:
+    url_to_call = lights_url + light + '/state'
+    body = {'on': False}
+    requests.put(url_to_call, json=body)
 
 
 def sun_set(t):
@@ -166,28 +167,32 @@ def sun_rise(t):
         if i>=200:
             switch_on(color,250)
 """
+def mix_col(col):
+    if col==1:
+        xy=[0.5,0.4]  #sun rise
+        return xy
 
+    elif col==0:
+        xy=[0.6,0.35]   #sun set
+        return xy
+
+#hue : yellow = 25500 / blue=46920 / red= 0/
 
 if __name__ == '__main__':
-    color=0
+    col=0
+    color=mix_col(col)
+    #color=0
     intensity=250     #1 to 254
     t=10  #10 secondes: time of waiting
     # couleur rouge : 0
     # intensity :50
-    """""
+
     switch_on(color,intensity)
-    
-    print("Enter 1 to switch off")
-    x=input()
-    if x=="1":
-        switch_off()
-    else:
-        print("Mauvais")
-        print(x)
-   
     sun_set(t)
-    """
+""""
     switch_off()
     sun_rise(t)
+1"""
+
 
 
