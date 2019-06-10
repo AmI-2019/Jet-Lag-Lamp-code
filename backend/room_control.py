@@ -13,12 +13,13 @@ users = users_ref.stream()
 for user in users:
     schedule_ref = db.collection(u'Users/{}/sleep_schedule'.format(user.id))
     print(u'{} stays {} days abroad'.format(user.id, user.to_dict().get('trip_duration')))
-
-    dep_zone = user.to_dict().get('dep_zone')
-    arr_zone = user.to_dict().get('arr_zone')
-    trip_duration = int(user.to_dict().get('trip_duration'))
-    time_schedule = set_schedule(dep_zone, arr_zone, trip_duration)
-    n = 0
+    time_schedule = schedule_ref.stream()
+    my_schedule = []
     for schedule in time_schedule:
-        schedule_ref.document(u'day_{}'.format(n)).set(schedule)
-        n += 1
+        wake_time = schedule.to_dict().get('wake_time')
+        sleep_time = schedule.to_dict().get('sleep_time')
+        print("Sleep time: {}".format(sleep_time))
+        print("Wake time: {}".format(wake_time))
+
+    # Checking current time
+

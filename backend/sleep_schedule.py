@@ -63,7 +63,7 @@ def set_schedule(dep_place, arr_place, home_sleep_time, home_wake_time, events_l
                 break
 
         time_list.append({"sleep_time": local_sleep_time.strftime("%d/%m/%Y %H:%M"),
-                          "wake:time": local_wake_time.strftime("%d/%m/%Y %H:%M")})
+                          "wake_time": local_wake_time.strftime("%d/%m/%Y %H:%M")})
         local_sleep_time = local_sleep_time + timedelta(days=1)
         local_wake_time = local_wake_time + timedelta(days=1)
         i += 1
