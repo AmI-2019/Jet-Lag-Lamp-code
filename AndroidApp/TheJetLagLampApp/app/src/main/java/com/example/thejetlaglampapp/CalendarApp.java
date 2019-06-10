@@ -28,55 +28,56 @@ public class CalendarApp extends AppCompatActivity {
     ListView ListViewCalendar;
     ProgressBar pb;
 
-    final ArrayList<String> events=new ArrayList<String>();
+    private ArrayList<String> events=new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendarapp);
+
         ListViewCalendar =findViewById(R.id.calendar);
         pb=findViewById(R.id.progress_bar);
+
         pb.setVisibility(View.VISIBLE);
 
         mail= FirebaseAuth.getInstance().getCurrentUser().getEmail();
+
 
         //fill the list view with the task list
         new AsyncTask<Void, Void, List<String>>() {
 
             @Override
             protected List<String> doInBackground(Void... voids) {
+                for (int i=1;i<30;i++){
+                DocumentReference docRef = Database.getFirestoreInstance().collection("Users").document(mail).collection("events").document(Integer.toString(i));
+                docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
-                //for (int i=0;i<30;i++){
-                    DocumentReference docRef = Database.getFirestoreInstance().collection("Users").document(mail).collection("events").document("1");
-                    docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-
-                            if (task.isSuccessful()) {
-                                DocumentSnapshot document = task.getResult();
-                                if (document.exists()) {
-                                    Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                                    Event event_firebase = document.toObject(Event.class);
-                                    events.add(event_firebase.toString());
-                                } else {
-                                    Log.d(TAG, "No such document");
-                                }
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                                Event event_firebase = document.toObject(Event.class);
+                                events.add(event_firebase.toString());
                             } else {
-                                Log.d(TAG, "get failed with ", task.getException());
+                                Log.d(TAG, "No such document");
                             }
-
+                        } else {
+                            Log.d(TAG, "get failed with ", task.getException());
                         }
-                    });
-                //}
+
+                    }
+                });
+                }
 
                 return events;
-
             }
-
             @Override
-            protected void onPostExecute(List<String> events){
+            protected void onPostExecute(List<String> events) {
                 if(events != null) {
-                    ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, events);
+                    ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_2, events);
                     ListViewCalendar.setAdapter(adapter);
+                    Toast toast = Toast.makeText(getApplicationContext(), "layoutcompleated", Toast.LENGTH_LONG);
                     pb.setVisibility(View.GONE);
                 }
                 else{
@@ -84,7 +85,7 @@ public class CalendarApp extends AppCompatActivity {
                     toast.show();
                 }
             }
-
         }.execute();
+
     }
 }
