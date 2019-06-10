@@ -1,5 +1,6 @@
 import firebase_admin
-from datetime import datetime, timedelta
+from datetime import datetime
+from time import sleep
 from pytz import timezone
 from firebase_admin import credentials
 from firebase_admin import firestore
@@ -23,13 +24,16 @@ for user in users:
         # print("Sleep time: {}".format(sleep_time))
         # print("Wake time: {}".format(wake_time))
         my_schedule.append({'sleep_time': sleep_time, 'wake_time': wake_time})
-        if sleep_time < datetime.now() < wake_time:
-            print("HELLO!!!")
+
     n = 0
     for day in my_schedule:
         print("\nDay {}:".format(n))
         print("Sleep time: {}".format(datetime.strftime(day.get('sleep_time'), "%d/%m/%Y %H:%M")))
         print("Wake time: {}".format(datetime.strftime(day.get('wake_time'), "%d/%m/%Y %H:%M")))
+        if day.get('sleep_time') < datetime.now() < day.get('wake_time'):
+            print("HELLO!!!")
+            sleep(1)
+
         n += 1
 
     # Checking current time
