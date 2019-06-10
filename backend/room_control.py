@@ -21,6 +21,9 @@ mydate = datetime.astimezone(astral.sunrise_utc(today, 45.06301, 7.66003), mz)
 
 sunrise = datetime.astimezone(astral.sunrise_utc(today, 45.06301, 7.66003), mz)
 sunset = datetime.astimezone(astral.sunset_utc(today, 45.06301, 7.66003), mz)
+# GPS coordinates to timezone query
+# http://api.timezonedb.com/v2.1/get-time-zone?key=DSZOYLMUORVL&format=xml&by=position&lat=64.17752&lng=-51.71046
+# http://api.timezonedb.com/v2.1/get-time-zone?key=DSZOYLMUORVL&format=json&by=position&lat=64.17752&lng=-51.71046
 print(mydate)
 for user in users:
     schedule_ref = db.collection(u'Users/{}/sleep_schedule'.format(user.id))
@@ -56,8 +59,6 @@ for user in users:
         if datetime.now() == day.get('wake_time'):
             # The user must wake up! Play alarm clock tone
             print("WAKE UP")
-
-
 
         n += 1
 

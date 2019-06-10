@@ -2,6 +2,10 @@ import firebase_admin
 from sleep_schedule import set_schedule
 from firebase_admin import credentials
 from firebase_admin import firestore
+# from gpstotz import gpstotz
+# lat = 51.50
+# lon = 0.12
+# timezone = gpstotz.gpsToTimezone(lat, lon)
 
 # events_list = [{"name": "wash the car", "start_time": "10/06/2019 09:00", "end_time": "10/06/2019 09:45"},
 #                {"name": "pet the hedgehog", "start_time": "10/06/2019 09:45", "end_time": "10/06/2019 10:00"},
@@ -19,7 +23,10 @@ users_ref = db.collection(u'Users')
 users = users_ref.stream()
 
 events_list = []
-
+fabio_ref = db.document(u'Users/fabio.baldo17@gmail.com')
+fabio = fabio_ref.get()
+address = fabio.to_dict().get('hotel_address')
+print(address)
 for user in users:
     user_dict = user.to_dict()
     # print(u'{} => {}'.format(user.id, user.to_dict()))
