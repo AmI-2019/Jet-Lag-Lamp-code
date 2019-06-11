@@ -16,7 +16,7 @@ import com.example.thejetlaglampapp.com.example.thejetlaglampapp.firebase.Event;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.ArrayList;
@@ -47,27 +47,28 @@ public class CalendarApp extends AppCompatActivity {
 
             @Override
             protected List<String> doInBackground(Void... voids) {
-                for (int i=1;i<30;i++){
-                DocumentReference docRef = Database.getFirestoreInstance().collection("Users").document(mail).collection("events").document(Integer.toString(i));
-                docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            if (document.exists()) {
-                                Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                                Event event_firebase = document.toObject(Event.class);
-                                events.add(event_firebase.toString());
+                CollectionReference collRef = Database.getFirestoreInstance().collection("Users").document(mail).collection("events");
+                for (int i=1;i<=collRef.get().getResult().size();i++){ //Scnsiono tutti i documenti all'interno della collection
+                    collRef.document(Integer.toString(i)).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+                            if (task.isSuccessful()) {
+                                DocumentSnapshot document = task.getResult();
+                                if (document.exists()) {
+                                    Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                                    Event event_firebase = document.toObject(Event.class);
+                                    events.add(event_firebase.toString());
+                                } else {
+                                    Log.d(TAG, "No such document");
+                                }
                             } else {
-                                Log.d(TAG, "No such document");
+                                Log.d(TAG, "get failed with ", task.getException());
                             }
-                        } else {
-                            Log.d(TAG, "get failed with ", task.getException());
-                        }
 
-                    }
-                });
+                        }
+                    });
                 }
 
                 return events;
@@ -79,6 +80,7 @@ public class CalendarApp extends AppCompatActivity {
                     ListViewCalendar.setAdapter(adapter);
                     Toast toast = Toast.makeText(getApplicationContext(), "layoutcompleated", Toast.LENGTH_LONG);
                     pb.setVisibility(View.GONE);
+                    toast.show();
                 }
                 else{
                     Toast toast = Toast.makeText(getApplicationContext(), "OOOOPS, something goes wrong!", Toast.LENGTH_LONG);
