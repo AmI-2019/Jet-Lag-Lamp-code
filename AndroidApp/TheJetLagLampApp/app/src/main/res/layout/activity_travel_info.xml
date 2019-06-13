@@ -17,8 +17,10 @@
         android:text="How many day will last your travel?"
         app:layout_constraintBottom_toTopOf="@+id/textView_lastCountry"
         app:layout_constraintEnd_toStartOf="@+id/editText_days"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView_lastCountry"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView_lastCountry"
@@ -30,18 +32,22 @@
         android:text="In which country have you been in the last 15 days?"
         app:layout_constraintBottom_toTopOf="@+id/switch_enableSystem"
         app:layout_constraintStart_toStartOf="@+id/switch_enableSystem"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/editText_days"
         android:layout_width="140dp"
         android:layout_height="60dp"
+        android:layout_marginEnd="12dp"
         android:ems="10"
         android:hint="days"
         android:inputType="textPersonName"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="@+id/textView_dayDescription"
-        app:layout_constraintEnd_toEndOf="@+id/editText_lastCountry"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView_dayDescription"
         app:layout_constraintTop_toTopOf="@+id/textView_dayDescription"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -53,8 +59,11 @@
         android:hint="country"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="@+id/textView_lastCountry"
-        app:layout_constraintEnd_toEndOf="@+id/switch_enableSystem"
-        app:layout_constraintTop_toTopOf="@+id/textView_lastCountry" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.619"
+        app:layout_constraintStart_toEndOf="@+id/textView_lastCountry"
+        app:layout_constraintTop_toTopOf="@+id/textView_lastCountry"
+        app:layout_constraintVertical_bias="0.409" />
 
     <Button
         android:id="@+id/btn_UpdateAdditionalInfo"
@@ -73,12 +82,14 @@
         android:id="@+id/switch_enableSystem"
         android:layout_width="313dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="108dp"
+        android:layout_marginBottom="212dp"
         android:text="Enable system"
         android:textColor="@color/googleLightGray"
+        android:textColorHighlight="#1976D2"
+        android:textColorLink="#C2185B"
         app:layout_constraintBottom_toTopOf="@+id/btn_UpdateAdditionalInfo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

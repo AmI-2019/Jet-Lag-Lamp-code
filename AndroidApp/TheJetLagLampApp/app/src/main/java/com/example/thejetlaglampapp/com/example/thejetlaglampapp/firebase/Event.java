@@ -9,6 +9,12 @@ public class Event {
 
     }
 
+    public Event(String title, String start_time, String end_time) {
+        this.title = title;
+        this.start_time = start_time;
+        this.end_time = end_time;
+    }
+
     public String getTitle() {
         return title;
     }

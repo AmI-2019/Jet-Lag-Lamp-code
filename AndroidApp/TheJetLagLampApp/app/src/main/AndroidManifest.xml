@@ -13,10 +13,13 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/logo_jll_round"
+        android:icon="@mipmap/logo_jetlaglampapp"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
+        android:label="TheJetLagLamp"
         tools:ignore="GoogleAppIndexingWarning">
+
+        <activity android:name=".newEventOnCalendar"></activity>
 
         <receiver
             android:name=".WifiCheck"
@@ -35,10 +38,12 @@
         <activity android:name=".DailyPlan" />
         <activity android:name=".Profile" />
         <activity android:name=".GoogleSingInActivity" />
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

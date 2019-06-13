@@ -1,11 +1,14 @@
 package com.example.thejetlaglampapp;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -26,6 +29,8 @@ public class CalendarApp extends AppCompatActivity {
     String mail;
     ListView ListViewCalendar;
     ProgressBar pb;
+    ImageButton btn_AddCalendar_event;
+
     private ArrayList<String> events=new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +39,7 @@ public class CalendarApp extends AppCompatActivity {
 
         ListViewCalendar =findViewById(R.id.calendar);
         pb=findViewById(R.id.progress_bar);
-
+        btn_AddCalendar_event=findViewById(R.id.btn_AddCalendar_event);
        // pb.setVisibility(View.VISIBLE);
 
         mail= FirebaseAuth.getInstance().getCurrentUser().getEmail();
@@ -68,7 +73,7 @@ public class CalendarApp extends AppCompatActivity {
                                             Log.d(TAG, "No such document");
                                         }
                                     }
-
+                                    //To be added... sorting events
                                     ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, events);
                                     try {
                                         ListViewCalendar.setAdapter(adapter);
@@ -89,6 +94,15 @@ public class CalendarApp extends AppCompatActivity {
             }
 
         }.execute();
-
+        btn_AddCalendar_event.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openNewEventActivity();
+            }
+        });
+    }
+    void openNewEventActivity(){
+        Intent intent_newEventOnCalendar = new Intent(CalendarApp.this, newEventOnCalendar.class);
+        startActivity(intent_newEventOnCalendar);
     }
 }
