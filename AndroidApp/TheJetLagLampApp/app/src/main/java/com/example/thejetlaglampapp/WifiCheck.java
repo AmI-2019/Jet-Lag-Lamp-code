@@ -60,7 +60,7 @@ public class WifiCheck extends BroadcastReceiver {
     private boolean insideHotelNet(Context context){
         String wifiName=getWifiName(context.getApplicationContext());
         if (wifiName!=null){
-            if ( wifiName.contains("Vodafone5GHz-35017716")){
+            if ( wifiName.contains("eduroam")){
                 return true;
             }
             return false;

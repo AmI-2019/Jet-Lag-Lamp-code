@@ -2,6 +2,7 @@ package com.example.thejetlaglampapp;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -121,6 +122,10 @@ public class MainActivity extends AppCompatActivity {
                 openTravelInfoActivity();
             }
         });
+
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
+        registerReceiver(new WifiCheck(), filter);
 
     }
 

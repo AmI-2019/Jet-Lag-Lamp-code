@@ -16,7 +16,6 @@ import com.example.thejetlaglampapp.com.example.thejetlaglampapp.firebase.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 public class Profile extends AppCompatActivity {
@@ -47,37 +46,40 @@ public class Profile extends AppCompatActivity {
             @Override
             protected Boolean doInBackground(Void... voids) {
 
-                DocumentReference docRef = Database.getFirestoreInstance().collection("Users").document(mail);
+                Database
+                        .getFirestoreInstance()
+                        .collection("Users")
+                        .document(mail)
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
 
-                docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    DocumentSnapshot document = task.getResult();
+                                    if (document.exists()) {
+                                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                                        User user = document.toObject(User.class);
+                                        System.out.println(user);
 
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            if (document.exists()) {
-                                Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                                User user = document.toObject(User.class);
-                                System.out.println(user);
+                                        textView_Name.setText("Name: " + user.getName());
+                                        textView_Surname.setText("Surname: " + user.getSurname());
+                                        textView_email.setText("Email: " + user.getEmail());
+                                        textView_age.setText("Age: " + Integer.toString(user.getAge()));
+                                        textView_homeAddress.setText("Home address: " + user.getHome_address());
+                                        textView_typicalBedTime.setText("Typical Bed Time: " + user.getTypicalBedTime());
+                                        textView_typicalWakeUpTime.setText("Typical Wake Up Time: " + user.getTypicalWakeUpTime());
+                                    } else {
+                                        Log.d(TAG, "No such document");
+                                    }
+                                } else {
+                                    Log.d(TAG, "get failed with ", task.getException());
+                                }
 
-                                textView_Name.setText("Name: " + user.getName());
-                                textView_Surname.setText("Surname: " + user.getSurname());
-                                textView_email.setText("Email: " + user.getEmail());
-                                textView_age.setText("Age: " + Integer.toString(user.getAge()));
-                                textView_homeAddress.setText("Home address: " + user.getHome_address());
-                                textView_typicalBedTime.setText("Typical Bed Time: " + user.getTypicalBedTime());
-                                textView_typicalWakeUpTime.setText("Typical Wake Up Time: " + user.getTypicalWakeUpTime());
-                            } else {
-                                Log.d(TAG, "No such document");
                             }
-                        } else {
-                            Log.d(TAG, "get failed with ", task.getException());
-                        }
-
-                    }
 
 
-                });
+                        });
                 return true;
 
             }
@@ -97,5 +99,5 @@ public class Profile extends AppCompatActivity {
         Intent intent_ModifyProfileActivity = new Intent(Profile.this, ModifyProfile.class);
         startActivity(intent_ModifyProfileActivity);
     }
-
 }
+
