@@ -15,7 +15,7 @@
         android:radius="10dp"
         android:foregroundGravity="center"
         android:gravity="center"
-        android:text="SingIn or SingOut"
+        android:text="Login or Logout"
         android:textColor="@color/googleLightGray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -123,6 +123,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@mipmap/logo_foreground"/>
+        app:srcCompat="@mipmap/logo_jetlaglampapp"
+        tools:ignore="MissingConstraints" />
 
 </android.support.constraint.ConstraintLayout>

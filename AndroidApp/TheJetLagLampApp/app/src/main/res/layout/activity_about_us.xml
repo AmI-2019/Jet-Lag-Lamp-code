@@ -1,103 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/gridLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:columnCount="2"
-    android:rowCount="4"
-    android:textAlignment="center"
-    android:gravity="center"
-    android:layout_gravity="center"
-    app:layout_anchorGravity="center"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp">
+    android:orientation="vertical">
 
     <!-- Include other widget or layout tags here. These are considered
         "child views" or "children" of the linear layout -->
 
-
-    <ImageView
-        android:id="@+id/AboutUs_Fabio_image"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_row="1"
-        android:layout_column="0"
-        android:layout_alignStart="@+id/AboutUs_Fabio_text"
-        android:cropToPadding="false"
-        android:src="@mipmap/fabio"></ImageView>
-
     <TextView
-        android:id="@+id/AboutUs_Fabio_text"
-        android:layout_width="187dp"
-        android:layout_height="150dp"
-        android:gravity="center"
-        android:text="Fabio Baldo\n age 21"
+        android:id="@+id/AboutUs_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Our Team:"
+        android:textAllCaps="true"
         android:textColor="@color/googleLightGray"
-        android:textSize="18dp"
-        android:layout_row="1"
-        android:layout_column="1"></TextView>
+        android:textSize="20dp" />
 
-
-    <TextView
-        android:id="@+id/AboutUs_Vincent_text"
-        android:layout_column="1"
-        android:layout_row="0"
-        android:layout_width="187dp"
-        android:layout_height="150dp"
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="match_parent"
+        android:layout_height="619dp"
+        android:layout_gravity="center"
+        android:columnCount="2"
         android:gravity="center"
-        android:text="Vincent Guatier\n age 22"
-        android:textColor="@color/googleLightGray"
-        android:textSize="18dp"></TextView>
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:rowCount="4"
+        android:textAlignment="center"
+        app:layout_anchorGravity="center">
 
-    <ImageView
-        android:id="@+id/AboutUs_Vincent_image"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_row="0"
-        android:layout_column="0"
-        android:cropToPadding="false"
-        android:src="@mipmap/vincent"></ImageView>
+        <ImageView
+            android:id="@+id/AboutUs_Fabio_image"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_alignStart="@+id/AboutUs_Fabio_text"
+            android:cropToPadding="false"
+            android:src="@mipmap/fabio"></ImageView>
 
-    <TextView
-        android:id="@+id/AboutUs_Marion_text"
-        android:layout_column="1"
-        android:layout_row="3"
-        android:layout_width="187dp"
-        android:layout_height="150dp"
-        android:gravity="center"
-        android:text="Marion Durafour\n age 21"
-        android:textColor="@color/googleLightGray"
-        android:textSize="18dp"></TextView>
+        <TextView
+            android:id="@+id/AboutUs_Fabio_text"
+            android:layout_width="187dp"
+            android:layout_height="150dp"
+            android:layout_row="1"
+            android:layout_column="1"
 
-    <ImageView
-        android:id="@+id/AboutUs_Alessandro_image"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_row="2"
-        android:layout_column="0"
-        android:cropToPadding="false"
-        android:src="@mipmap/alessandro"></ImageView>
-
-    <ImageView
-        android:id="@+id/AboutUs_Marion_image"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_row="3"
-        android:layout_column="0"
-        android:cropToPadding="false"
-        android:src="@mipmap/marion"></ImageView>
+            android:gravity="center"
+            android:text="Fabio Baldo\n age 21\n fabio.baldo17@gmail.com"
+            android:textColor="@color/googleLightGray"
+            android:textSize="12sp"></TextView>
 
 
-    <TextView
-        android:id="@+id/AboutUs_Alessandro_text"
-        android:layout_column="1"
-        android:layout_row="2"
-        android:layout_width="187dp"
-        android:layout_height="150dp"
-        android:gravity="center"
-        android:text="Alessandro Bugliarelli\n age 21"
-        android:textColor="@color/googleLightGray"
-        android:textSize="18dp"></TextView>
+        <TextView
+            android:id="@+id/AboutUs_Vincent_text"
+            android:layout_width="187dp"
+            android:layout_height="150dp"
+            android:layout_row="0"
+            android:layout_column="1"
 
-</GridLayout>
+            android:gravity="center"
+            android:text="Vincent Guatier\n age 22\n s267144@studenti.polito.it"
+            android:textColor="@color/googleLightGray"
+            android:textSize="12dp"></TextView>
+
+        <ImageView
+            android:id="@+id/AboutUs_Vincent_image"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:cropToPadding="false"
+            android:src="@mipmap/vincent"></ImageView>
+
+        <TextView
+            android:id="@+id/AboutUs_Marion_text"
+            android:layout_width="187dp"
+            android:layout_height="150dp"
+            android:layout_row="3"
+            android:layout_column="1"
+
+            android:gravity="center"
+            android:text="Marion Durafour\n age 21\n marion.durafour@studenti.polito.it"
+            android:textColor="@color/googleLightGray"
+            android:textSize="12dp"></TextView>
+
+        <ImageView
+            android:id="@+id/AboutUs_Alessandro_image"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_row="2"
+            android:layout_column="0"
+            android:cropToPadding="false"
+            android:src="@mipmap/alessandro"></ImageView>
+
+        <ImageView
+            android:id="@+id/AboutUs_Marion_image"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_row="3"
+            android:layout_column="0"
+            android:cropToPadding="false"
+            android:src="@mipmap/marion"></ImageView>
+
+
+        <TextView
+            android:id="@+id/AboutUs_Alessandro_text"
+            android:layout_width="187dp"
+            android:layout_height="150dp"
+            android:layout_row="2"
+            android:layout_column="1"
+
+            android:gravity="center"
+            android:text="Alessandro Bugliarelli\n age 21\ns234845@studenti.polito.it"
+            android:textColor="@color/googleLightGray"
+            android:textSize="12sp"></TextView>
+    </GridLayout>
+
+
+</LinearLayout>

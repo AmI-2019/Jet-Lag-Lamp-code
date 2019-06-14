@@ -10,6 +10,16 @@
     tools:context=".Profile">
 
     <TextView
+        android:id="@+id/Profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/googleLightGray"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:text="Profile:" />
+
+    <TextView
         android:id="@+id/textView_Name"
         android:layout_width="351dp"
         android:layout_height="75dp"

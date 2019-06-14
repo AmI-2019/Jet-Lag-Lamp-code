@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.example.thejetlaglampapp.com.example.thejetlaglampapp.firebase.Database;
+import com.example.thejetlaglampapp.com.example.thejetlaglampapp.firebase.DeleteEvent;
 import com.example.thejetlaglampapp.com.example.thejetlaglampapp.firebase.Event;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,12 +26,12 @@ import java.util.Iterator;
 import java.util.List;
 
 public class CalendarApp extends AppCompatActivity {
-    private static final String TAG = Profile.class.getSimpleName();
+    private static final String TAG = CalendarApp.class.getSimpleName();
     String mail;
     ListView ListViewCalendar;
     ProgressBar pb;
     ImageButton btn_AddCalendar_event;
-
+    ImageButton btn_DelCalendar_event;
     private ArrayList<String> events=new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class CalendarApp extends AppCompatActivity {
         ListViewCalendar =findViewById(R.id.calendar);
         pb=findViewById(R.id.progress_bar);
         btn_AddCalendar_event=findViewById(R.id.btn_AddCalendar_event);
+        btn_DelCalendar_event=findViewById(R.id.btn_DelCalendar_event);
        // pb.setVisibility(View.VISIBLE);
 
         mail= FirebaseAuth.getInstance().getCurrentUser().getEmail();
@@ -100,9 +102,19 @@ public class CalendarApp extends AppCompatActivity {
                 openNewEventActivity();
             }
         });
+        btn_DelCalendar_event.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDeleteEvent();
+            }
+        });
     }
     void openNewEventActivity(){
         Intent intent_newEventOnCalendar = new Intent(CalendarApp.this, newEventOnCalendar.class);
         startActivity(intent_newEventOnCalendar);
+    }
+    void openDeleteEvent(){
+        Intent intent_deleteEventOnCalendar = new Intent(CalendarApp.this, DeleteEvent.class);
+        startActivity(intent_deleteEventOnCalendar);
     }
 }
