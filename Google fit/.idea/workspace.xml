@@ -82,9 +82,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="240" />
-    <option name="y" value="126" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="112" />
+    <option name="y" value="111" />
     <option name="width" value="1440" />
     <option name="height" value="775" />
   </component>
@@ -93,18 +93,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane" />
       <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Google fit" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Google fit" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -194,16 +184,17 @@
       <workItem from="1557330982181" duration="595000" />
       <workItem from="1557517065583" duration="599000" />
       <workItem from="1558005879530" duration="4000" />
+      <workItem from="1560166333648" duration="84000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15936000" />
+    <option name="totallyTimeSpent" value="16020000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="192" y="101" width="1152" height="620" extended-state="1" />
+    <frame x="90" y="89" width="1152" height="620" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20018281" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20383912" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />

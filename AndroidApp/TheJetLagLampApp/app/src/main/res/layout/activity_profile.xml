@@ -1,123 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_centerHorizontal="true"
+    
+    android:orientation="vertical"
     tools:context=".Profile">
 
     <TextView
-        android:id="@+id/textView_avgSleepingTime"
-        android:layout_width="351dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="27dp"
-        android:text=""
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView_avgDeepSleepTime"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_homeAddress" />
-
-    <TextView
-        android:id="@+id/textView_avgLightSleepTime"
-        android:layout_width="351dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="98dp"
-        android:text=""
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_modifyProfile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_avgDeepSleepTime" />
-
-    <TextView
-        android:id="@+id/textView_homeAddress"
-        android:layout_width="351dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="19dp"
-        android:text=""
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView_avgSleepingTime"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_age" />
-
-    <TextView
-        android:id="@+id/textView_avgDeepSleepTime"
-        android:layout_width="351dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="20dp"
-        android:text=""
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView_avgLightSleepTime"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_avgSleepingTime" />
-
-    <TextView
-        android:id="@+id/textView_Surname"
-        android:layout_width="351dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="24dp"
-        android:text=""
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView_email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_Name" />
-
-    <TextView
-        android:id="@+id/textView_age"
-        android:layout_width="351dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="22dp"
-        android:text=""
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView_homeAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_email" />
-
-    <TextView
-        android:id="@+id/textView_email"
-        android:layout_width="351dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="26dp"
-        android:text=""
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView_age"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_Surname" />
+        android:id="@+id/Profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/googleLightGray"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:text="Profile:" />
 
     <TextView
         android:id="@+id/textView_Name"
         android:layout_width="351dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="37dp"
-        android:layout_marginBottom="19dp"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView_Surname"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="75dp"
+        android:hint="Name"
+        android:textSize="18sp" />
 
+    <TextView
+        android:id="@+id/textView_Surname"
+        android:layout_width="351dp"
+        android:layout_height="75dp"
+        android:hint="Surname"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView_email"
+        android:layout_width="351dp"
+        android:layout_height="75dp"
+        android:hint="Email"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView_age"
+        android:layout_width="351dp"
+        android:layout_height="75dp"
+        android:hint="Age"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView_homeAddress"
+        android:layout_width="351dp"
+        android:layout_height="75dp"
+        android:hint="Home address"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView_typicalBedTime"
+        android:layout_width="351dp"
+        android:layout_height="75dp"
+        android:hint="Typical bed time"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/textView_typicalWakeUpTime"
+        android:layout_width="351dp"
+        android:layout_height="75dp"
+        android:hint="Typical wake-up time"
+        android:textSize="18sp" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="100dp" />
     <Button
         android:id="@+id/btn_modifyProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="55dp"
-        android:text="Modify"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_avgLightSleepTime" />
+        android:layout_gravity="center"
+        android:background="@drawable/mybutton"
+        android:text="Modify" />
 
-    <android.support.constraint.Barrier
-        android:id="@+id/barrier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="left"
-        tools:layout_editor_absoluteX="411dp" />
+    
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
