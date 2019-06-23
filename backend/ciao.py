@@ -2,17 +2,6 @@ import firebase_admin
 from sleep_schedule import set_schedule
 from firebase_admin import credentials
 from firebase_admin import firestore
-# from gpstotz import gpstotz
-# lat = 51.50
-# lon = 0.12
-# timezone = gpstotz.gpsToTimezone(lat, lon)
-
-# events_list = [{"name": "wash the car", "start_time": "10/06/2019 09:00", "end_time": "10/06/2019 09:45"},
-#                {"name": "pet the hedgehog", "start_time": "10/06/2019 09:45", "end_time": "10/06/2019 10:00"},
-#                {"name": "meeting with Faustus", "start_time": "10/06/2019 11:30", "end_time": "10/06/2019 12:30"},
-#                {"name": "go to post office", "start_time": "10/06/2019 15:00", "end_time": "10/06/2019 16:00"},
-#                {"name": "dinner with Theresa", "start_time": "10/06/2019 19:15", "end_time": "10/06/2019 21:30"},
-#                {"name": "beer with Donald", "start_time": "10/06/2019 23:15", "end_time": "11/06/2019 0:30"}]
 
 cred = credentials.Certificate("thejetlaglampapp-1-firebase-adminsdk-7oj9c-d795dc3925.json")
 default_app = firebase_admin.initialize_app(cred)
