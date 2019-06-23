@@ -53,6 +53,7 @@ for user in users:
             # Play white noise
             # Lamps gradually dim until they turn off
             print("HELLO DARKNESS")
+            play_noise()
 
         elif day.get('sleep_time') + day.get('sleep_delta')/2 < datetime.now() < day.get('wake_time'):
             # The room must be LIT, open the curtains 20-30 min before the sunset
