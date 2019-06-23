@@ -11,7 +11,7 @@ class myThreadPlayVLC(threading.Thread):
 
 
 def playVLC(playingtime):
-    player = vlc.MediaPlayer("/home/POLITO/s235527/Desktop/whnoise.mp3")
+    player = vlc.MediaPlayer("/whiteonoise.wav")
     player.play()
     time.sleep(playingtime)
 
