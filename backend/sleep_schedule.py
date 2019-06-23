@@ -22,7 +22,6 @@ def set_schedule(dep_place, arr_place, home_sleep_time, home_wake_time, events_l
     local_wake_time = datetime.astimezone(dep_wake_time, arr_zone)
 
     # Other parameters and work variables
-    # days = 7
     direction = ''
     time_list = []
 

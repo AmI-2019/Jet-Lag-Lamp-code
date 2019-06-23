@@ -17,9 +17,22 @@ fabio_ref = db.document(u'Users/fabio.baldo17@gmail.com')
 schedule_ref = db.collection(u'Users/fabio.baldo17@gmail.com/sleep_schedule')
 fabio = fabio_ref.get()
 fabio_dict = fabio.to_dict()
+n = 0
+for schedule in schedule_ref.stream():
+    schedule_ref.document(u'day_{}'.format(str(n).zfill(3))).delete()
+    n += 1
 
 hotel_address = fabio_dict.get('hotel_address')
 print(hotel_address)
+
+today = date.today()
+astral = Astral()
+print(astral.sunrise_utc(today, 45.06301, 7.66003))
+mz = timezone("Europe/Rome")
+mydate = datetime.astimezone(astral.sunrise_utc(today, 45.06301, 7.66003), mz)
+
+sunrise = datetime.astimezone(astral.sunrise_utc(today, 45.06301, 7.66003), mz)
+sunset = datetime.astimezone(astral.sunset_utc(today, 45.06301, 7.66003), mz)
 
 print(u'Fabio is staying {} days abroad'.format(fabio_dict.get('trip_duration')))
 # home_sleep_time = user_dict.get('home_sleep_time')
