@@ -6,6 +6,12 @@ from pytz import timezone
 from sleep_schedule import set_schedule
 from firebase_admin import credentials
 from firebase_admin import firestore
+from play_whitenoise import play_noise
+from play_whitenoise import stop_noise
+
+
+print("I hope you'll like some BROWN NOISE")
+play_noise()
 
 cred = credentials.Certificate("thejetlaglampapp-1-firebase-adminsdk-7oj9c-d795dc3925.json")
 default_app = firebase_admin.initialize_app(cred)
@@ -87,3 +93,4 @@ for day in my_schedule:
 
 # Checking current time
 # TODO: define the STATES of the application, like 'the user is sleeping', 'sunset', 'sunrise' etc.
+stop_noise()
