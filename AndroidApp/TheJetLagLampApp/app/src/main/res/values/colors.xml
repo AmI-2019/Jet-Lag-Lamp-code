@@ -3,7 +3,11 @@
     <color name="colorPrimary">#039BE5</color>
     <color name="colorPrimaryDark">#0288D1</color>
     <color name="colorAccent">#FFA000</color>
-
+    <color name="buttonColorLightBlue">#0288D1</color>
+    <color name="backGroundLightBlue">#6FAEEC</color>
+    <color name="buttonColorDarkBlue">#1976D2</color>
+    <color name="googleLightGray">#f1f1f1</color>
+    <color name="googleDarkGray">#2d2d2d</color>
     <color name="grey_100">#F5F5F5</color>
     <color name="grey_300">#E0E0E0</color>
     <color name="grey_500">#9E9E9E</color>

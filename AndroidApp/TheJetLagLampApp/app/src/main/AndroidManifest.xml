@@ -9,36 +9,49 @@
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/logo_jll_round"
+        android:icon="@mipmap/logo_jetlaglampapp"
         android:label="TheJetLagLamp"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
+        android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".TravelInfo"></activity>
+        <activity android:name=".com.example.thejetlaglampapp.firebase.DeleteEvent"></activity>
+        <activity android:name=".newEventOnCalendar" />
+
+        <receiver
+            android:name=".WifiCheck"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".CalendarApp" />
+        <activity android:name=".TravelInfo" />
         <activity android:name=".com.example.thejetlaglampapp.firebase.ModifyProfile" />
         <activity android:name=".AboutUs" />
         <activity android:name=".Hotels" />
-        <activity android:name=".Settings" />
         <activity android:name=".DailyPlan" />
         <activity android:name=".Profile" />
         <activity android:name=".GoogleSingInActivity" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <service
             android:name=".MyJobService"
             android:exported="true"
-            android:permission="android.permission.BIND_JOB_SERVICE" >
-        </service>
-
+            android:permission="android.permission.BIND_JOB_SERVICE" />
     </application>
 
 </manifest>
