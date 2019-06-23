@@ -11,7 +11,7 @@ class myThreadPlayVLC(threading.Thread):
 
 
 def playVLC(playingtime):
-    player = vlc.MediaPlayer("/")
+    player = vlc.MediaPlayer("/whitenoise.wma")
     player.play()
     time.sleep(playingtime)
 
