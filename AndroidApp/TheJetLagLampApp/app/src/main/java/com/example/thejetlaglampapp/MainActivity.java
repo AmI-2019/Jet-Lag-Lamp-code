@@ -15,7 +15,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.thejetlaglampapp.com.example.thejetlaglampapp.firebase.Database;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -27,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
         Button btn_Website;
         Button btn_AboutUs;
         Button btn_ViewProfile;
-        private String mail;
+        String mail;
+        FirebaseUser user;
         protected LocationManager locationManager;
         protected LocationListener locationListener;
 
@@ -39,6 +43,18 @@ public class MainActivity extends AppCompatActivity {
     };
     private static final String[] WRITECALENDAR_PERM = {
             Manifest.permission.WRITE_CALENDAR
+    };
+    private static final String[] RECEIVE_BOOT_COMPLETED_PERM = {
+            Manifest.permission.RECEIVE_BOOT_COMPLETED
+    };
+    private static final String[] INTERNET_PERM = {
+            Manifest.permission.INTERNET
+    };
+    private static final String[] ACCESS_WIFI_STATE_PERM = {
+            Manifest.permission.ACCESS_WIFI_STATE
+    };
+    private static final String[] ACCESS_NETWORK_STATE_PERM = {
+            Manifest.permission.ACCESS_NETWORK_STATE
     };
 
 
@@ -57,12 +73,30 @@ public class MainActivity extends AppCompatActivity {
         if(ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_CALENDAR) != PackageManager.PERMISSION_GRANTED){
             requestPermissions(WRITECALENDAR_PERM,1011);
         }
+        if(ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_CALENDAR) != PackageManager.PERMISSION_GRANTED){
+            requestPermissions(WRITECALENDAR_PERM,1011);
+        }
+        if(ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECEIVE_BOOT_COMPLETED) != PackageManager.PERMISSION_GRANTED){
+            requestPermissions(RECEIVE_BOOT_COMPLETED_PERM,1010);
+        }
+        if(ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED){
+            requestPermissions(INTERNET_PERM,1001);
+        }
+        if(ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_WIFI_STATE) != PackageManager.PERMISSION_GRANTED){
+            requestPermissions(ACCESS_WIFI_STATE_PERM,1011);
+        }
+        if(ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_NETWORK_STATE) != PackageManager.PERMISSION_GRANTED){
+            requestPermissions(ACCESS_NETWORK_STATE_PERM,1011);
+        }
 
 
-        mail=FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
-        if (mail==null){
+        if (user==null){
+            mail="test";
             openSingInActivity();
+        }
+        else{
             mail=FirebaseAuth.getInstance().getCurrentUser().getEmail();
         }
 
@@ -77,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
         btn_ViewProfile=findViewById(R.id.btn_ViewProfile);
 
 
-        //scheduleJob();
+
 
         //OnClickListener init
         btn_SingIn.setOnClickListener(new View.OnClickListener() {
@@ -126,30 +160,17 @@ public class MainActivity extends AppCompatActivity {
         IntentFilter filter = new IntentFilter();
         filter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
         registerReceiver(new WifiCheck(), filter);
+        if (mail.equals("test")){}
+        else{
+            FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
 
-    }
+            DocumentReference docRef = Database.getFirestoreInstance().collection("Users").document(mail);
+            docRef.update("name", user.getDisplayName(),
+                    "email", user.getEmail());
 
-    //------------------------------------------------------------------------------------------
-   /* public void scheduleJob(){
-        ComponentName componentName = new ComponentName(this, MyJobService.class);
-        JobInfo info = new JobInfo.Builder(123, componentName)
-                .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
-                .setPersisted(true)
-                .setPeriodic(15 * 60 * 1000)
-                .build();
-
-        JobScheduler scheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
-        int resultCode = scheduler.schedule(info);
-        if (resultCode == JobScheduler.RESULT_SUCCESS) {
-            Toast.makeText(this, "Job schedulato con successo", Toast.LENGTH_LONG).show();
         }
-    }
 
-    public void cancelJob() {
-        JobScheduler scheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
-        scheduler.cancel(123);
-    }*/
-    //------------------------------------------------------------------------------------------
+    }
 
 
     //Open function definitions

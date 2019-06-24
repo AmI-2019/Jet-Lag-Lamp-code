@@ -46,6 +46,7 @@ public class GoogleSingInActivity extends BaseActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google_sing_in);
 
+
         // Views
         mGoogleUserTextView = findViewById(R.id.status);
         mUserEmailTextView = findViewById(R.id.detail);
@@ -139,6 +140,7 @@ public class GoogleSingInActivity extends BaseActivity implements
                         // [END_EXCLUDE]
                     }
                 });
+
     }
     // [END auth_with_google]
 
@@ -192,6 +194,7 @@ public class GoogleSingInActivity extends BaseActivity implements
             findViewById(R.id.signInButton).setVisibility(View.VISIBLE);
             findViewById(R.id.signOutAndDisconnect).setVisibility(View.GONE);
         }
+
     }
 
     @Override

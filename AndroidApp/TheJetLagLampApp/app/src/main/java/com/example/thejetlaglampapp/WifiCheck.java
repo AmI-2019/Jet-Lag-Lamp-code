@@ -26,7 +26,13 @@ public class WifiCheck extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         boolean inside=insideHotelNet(context);
-        mail= FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        if(FirebaseAuth.getInstance().getCurrentUser()==null){
+            mail="test";
+        }
+        else {
+            mail= FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        }
+
         DocumentReference docRef = Database.getFirestoreInstance().collection("Users").document(mail);
 
         if (inside){
