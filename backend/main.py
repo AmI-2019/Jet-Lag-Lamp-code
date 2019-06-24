@@ -3,7 +3,10 @@ from time import sleep
 from astral import Astral
 from sleep_schedule import init_schedule
 from play_whitenoise import play_noise, stop_noise
+from clock_demo import start_clock, stop_clock, demo_time
 
+print("BROWN NOISE OP")
+play_noise()
 
 time_schedule = init_schedule()
 
@@ -24,6 +27,8 @@ for schedule in time_schedule:
     my_schedule.append({'sleep_time': sleep_time, 'wake_time': wake_time, 'sleep_delta': sleep_delta})
 
 n = 0
+print("STARTING FAKE TIME")
+start_clock(my_schedule[1].get('wake_time'))
 for day in my_schedule:
     print("\nDay {}:".format(n))
     print("Sleep time: {}".format(datetime.strftime(day.get('sleep_time'), "%d/%m/%Y %H:%M")))
@@ -51,3 +56,9 @@ for day in my_schedule:
 
 # Checking current time
 # TODO: define the STATES of the application, like 'the user is sleeping', 'sunset', 'sunrise' etc.
+print(demo_time())
+sleep(2)
+print(demo_time())
+stop_clock()
+print(demo_time())
+stop_noise()
