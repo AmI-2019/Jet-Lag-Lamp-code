@@ -3,6 +3,8 @@ from datetime import datetime, date
 from time import sleep
 from astral import Astral
 from pytz import timezone
+from play_whitenoise import play_noise
+from play_whitenoise import stop_noise
 from firebase_admin import credentials
 from firebase_admin import firestore
 
@@ -50,14 +52,22 @@ for user in users:
 
         if day.get('sleep_time') < datetime.now() < day.get('sleep_time') + day.get('sleep_delta')/2:
             # The room must be DARK
+            # Play white noise
+            # Lamps gradually dim until they turn off
             print("HELLO DARKNESS")
+            # play_noise()
 
         elif day.get('sleep_time') + day.get('sleep_delta')/2 < datetime.now() < day.get('wake_time'):
             # The room must be LIT, open the curtains 20-30 min before the sunset
+            # White noise keeps playing
+            # Lamps turn on, the become gradually brighter
+            # If outside there's daylight
             print("HELLO LIGHT")
 
         if datetime.now() == day.get('wake_time'):
             # The user must wake up! Play alarm clock tone
+            # Stop playing white noise
+            # Lights reach the maximum brightness
             print("WAKE UP")
 
         n += 1
