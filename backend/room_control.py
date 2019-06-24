@@ -3,8 +3,8 @@ from datetime import datetime, date
 from time import sleep
 from astral import Astral
 from pytz import timezone
-from .play_whitenoise import play_noise
-from .play_whitenoise import stop_noise
+from play_whitenoise import play_noise
+from play_whitenoise import stop_noise
 from firebase_admin import credentials
 from firebase_admin import firestore
 
