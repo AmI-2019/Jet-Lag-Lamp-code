@@ -12,7 +12,7 @@ class TimeDemo(Thread):
     def run(self):
         while self.clock_on:
             sleep(0.001)
-            self.my_time += timedelta(seconds=1)
+            self.my_time += timedelta(seconds=3)
 
     def set(self, start_time):
         self.my_time = start_time

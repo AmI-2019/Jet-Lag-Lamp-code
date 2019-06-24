@@ -57,7 +57,7 @@ for day in my_schedule:
 # Checking current time
 # TODO: define the STATES of the application, like 'the user is sleeping', 'sunset', 'sunrise' etc.
 print(demo_time())
-sleep(2)
+sleep(10)
 print(demo_time())
 stop_clock()
 print(demo_time())
