@@ -12,7 +12,7 @@ class WhiteNoise(Thread):
         pygame.mixer.music.play(-1)
         while pygame.mixer.music.get_busy():
             continue
-        
+
     def stop(self):
         pygame.mixer.music.fadeout(5000)
 
