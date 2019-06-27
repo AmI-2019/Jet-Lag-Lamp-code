@@ -5,10 +5,12 @@ from threading import Thread
 from astral import Astral
 from sleep_schedule import init_schedule
 from hue import switch_on, switch_off, sun_set, sun_rise, mix_col
-from blinders import shut_down,op_en,st_op
+from blinders import shut_down, op_en, st_op
 
 
 time_schedule = init_schedule()
+
+# Declaring the thread for the white noise playback
 
 
 class WhiteNoise(Thread):
@@ -34,16 +36,8 @@ def stop_noise():
     noise_thread.stop()
     noise_thread.join()
 
-# Obtaining sunrise and sunset time from the local time zone
-# today = date.today()
-# astral = Astral()
-# sunrise = datetime.astimezone(astral.sunrise_utc(today, float(latitude), float(longitude)), timezone(arr_zone))
-# sunset = datetime.astimezone(astral.sunset_utc(today, float(latitude), float(longitude)), timezone(arr_zone))
-# print("Sunrise: " + str(sunrise))
-# print("Sunset: " + str(sunset))
 
 # Processing the schedule --> room control
-
 
 my_schedule = []
 switch_on(5000, 254)
@@ -57,6 +51,9 @@ n = 0
 for day in my_schedule:
     demo_time = day.get('sleep_time')
     activate_noise = True
+    opened_curtains = False
+    sunrise_flag = True
+    sunset_flag = True
     noise_thread = WhiteNoise()
     print("\nDay {}:".format(n))
     print("Sleep time: {}".format(datetime.strftime(day.get('sleep_time'), "%d/%m/%Y %H:%M")))
@@ -64,44 +61,59 @@ for day in my_schedule:
     while demo_time <= day.get('wake_time'):
         if day.get('sleep_time') < demo_time < day.get('wake_time'):
             # The user is sleeping, play white noise if requested
-            print("HELLO!!!")
             if activate_noise:
                 play_noise()
                 activate_noise = False
+                print(demo_time)
+                print("Beginning of the sleep period. Activating white noise.")
 
         if day.get('sleep_time') < demo_time < day.get('sleep_time') + day.get('sleep_delta')/2:
             # The room must be DARK
-<<<<<<< HEAD
-
-=======
-            shut_down()
-            t = 10
-            col = 1
-            color = mix_col(col)
-            sun_set(t, color)
->>>>>>> b7a7ba5882dec3b414877435723023a12b3524e0
-            print("HELLO DARKNESS")
+            # Closing the curtains
+            if opened_curtains:
+                opened_curtains = False
+                shut_down()
+            # Dimming the lamps until they turn off
+            if sunset_flag:
+                sunset_flag = False
+                t = 10
+                col = 1
+                color = mix_col(col)
+                sun_set(t, color)
+                print(demo_time)
+                print("Dark phase: closing curtains and starting sunset procedure.")
 
         elif day.get('sleep_time') + day.get('sleep_delta')/2 < demo_time < day.get('wake_time'):
             # The room must be LIT, open the curtains 20-30 min before the sunset
-<<<<<<< HEAD
             # Turn on Philips Hue --> start sunset procedure
-            # use a flag like activate_noise
-=======
-            op_en()
-            t = 10
-            col = 0
-            color = mix_col(col)
-            sun_rise(t, color)
->>>>>>> b7a7ba5882dec3b414877435723023a12b3524e0
-            print("HELLO LIGHT")
+            # Opening curtains
+            if opened_curtains == False:
+                opened_curtains = True
+                op_en()
+            # Turning on the lamps, they gradually become brighter
+            if sunrise_flag:
+                sunrise_flag = False
+                t = 10
+                col = 0
+                color = mix_col(col)
+                sun_rise(t, color)
+                print(demo_time)
+                print("Light phase: opening curtains and starting sunrise procedure.")
+                # TODO: if outside there's no sun or it's too strong just turn on the lamps
+# Obtaining sunrise and sunset time from the local time zone
+# today = date.today()
+# astral = Astral()
+# sunrise = datetime.astimezone(astral.sunrise_utc(today, float(latitude), float(longitude)), timezone(arr_zone))
+# sunset = datetime.astimezone(astral.sunset_utc(today, float(latitude), float(longitude)), timezone(arr_zone))
+# print("Sunrise: " + str(sunrise))
+# print("Sunset: " + str(sunset))
 
         if demo_time == day.get('wake_time'):
             # The user must wake up! Play alarm clock tone
             stop_noise()
-            print("WAKE UP")
+            print(demo_time)
+            print("End of the sleep period. Stopping white noise. Playing alarm clock tone.")
 
-        print(demo_time)
         sleep(0.001)
         demo_time += timedelta(seconds=1)
     n += 1

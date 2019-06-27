@@ -55,11 +55,8 @@ def switch_on(color, intensity):
     # username = "-yBmYpKxa2bMpOgle8ZOFBodBuruXHvvQPagKHQI"
     # if you are using the emulator, the username is:
     username = 'newdeveloper'      #use with the emulator
-<<<<<<< HEAD
     # light = "12"  # number of the light we are using
-=======
     #light = "12"  # number of the light we are using
->>>>>>> b7a7ba5882dec3b414877435723023a12b3524e0
     # lights URL
     lights_url = base_url + '/api/' + username + '/lights/'
 
@@ -69,19 +66,16 @@ def switch_on(color, intensity):
         # iterate over the Hue lights, turn them on with the color loop effect
         for light in all_the_lights:           #activate this loop to switch all lights
             url_to_call = lights_url + light + '/state'
-<<<<<<< HEAD
             body = {'on': True, 'effect': 'colorloop'}
             # to set the red color
             # body = {'on': True, "hue": color, "bri": intensity}
             # body = {'on': True, "xy": color, "bri": intensity}
             # more colors: https://www.developers.meethue.com/documentation/core-concepts
-=======
         #body = {'on': True, 'effect': 'colorloop'}
         # to set the red color
             body = {'on': True, "hue": color, "bri": intensity}
             #body = {'on': True, "xy": color, "bri": intensity}
         # more colors: https://www.developers.meethue.com/documentation/core-concepts
->>>>>>> b7a7ba5882dec3b414877435723023a12b3524e0
             requests.put(url_to_call, json=body)
     else:
         print('Error:', all_the_lights[0]['error'])
@@ -97,11 +91,8 @@ def switch_off():
     # username = "-yBmYpKxa2bMpOgle8ZOFBodBuruXHvvQPagKHQI"
     # if you are using the emulator, the username is:
     username = 'newdeveloper'      #use with the emulator
-<<<<<<< HEAD
     # light = "12"
-=======
     #light = "12"
->>>>>>> b7a7ba5882dec3b414877435723023a12b3524e0
     # lights URL
     lights_url = base_url + '/api/' + username + '/lights/'
 
@@ -190,12 +181,12 @@ def sun_rise(t,color):
 
 def mix_col(col):
     if col == 1:
-        #xy = [0.5, 0.4]  # sunrise
+        # xy = [0.5, 0.4]  # sunrise
         col= 0
         return col
 
     elif col == 0:
-        #xy = [0.6, 0.35]  # sunset
+        # xy = [0.6, 0.35]  # sunset
         col= 46920
         return col
 
@@ -217,4 +208,4 @@ if __name__ == '__main__':
 """"
     switch_off()
     sun_rise(t)
-1"""
+"""
