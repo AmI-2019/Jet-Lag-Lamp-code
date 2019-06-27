@@ -71,6 +71,7 @@ for day in my_schedule:
 
         if day.get('sleep_time') < demo_time < day.get('sleep_time') + day.get('sleep_delta')/2:
             # The room must be DARK
+            shut_down()
             t = 10
             col = 1
             color = mix_col(col)
