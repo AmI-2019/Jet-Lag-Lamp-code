@@ -2,6 +2,9 @@ from datetime import datetime, date, timedelta, time
 from time import sleep
 import pygame
 from threading import Thread
+import time
+import tkinter as tk
+from tkinter import *
 from astral import Astral
 from sleep_schedule import init_schedule
 from hue import switch_on, switch_off, sun_set, sun_rise, mix_col
@@ -37,6 +40,21 @@ def stop_noise():
     noise_thread.join()
 
 
+background_color = 'white'
+color = 'blue'
+
+
+def tick(time1=''):
+    clock_frame.config(text=demo_time.strftime('%H:%M:%S'))
+
+
+root = tk.Tk()
+root.title("Time")
+clock_frame = tk.Label(root, font='arial 100 bold', bg=background_color, fg=color)
+clock_frame.pack(fill='both', expand=1)
+root.geometry('700x500')
+root.configure(background="lightgreen")
+
 # Processing the schedule --> room control
 
 my_schedule = []
@@ -59,6 +77,10 @@ for day in my_schedule:
     print("Sleep time: {}".format(datetime.strftime(day.get('sleep_time'), "%d/%m/%Y %H:%M")))
     print("Wake time: {}".format(datetime.strftime(day.get('wake_time'), "%d/%m/%Y %H:%M")))
     while demo_time <= day.get('wake_time'):
+        tick()
+        # root.mainloop()
+        root.update_idletasks()
+        root.update()
         if day.get('sleep_time') < demo_time < day.get('wake_time'):
             # The user is sleeping, play white noise if requested
             if activate_noise:
@@ -76,12 +98,12 @@ for day in my_schedule:
             # Dimming the lamps until they turn off
             if sunset_flag:
                 sunset_flag = False
+                print(demo_time)
+                print("Dark phase: closing curtains and starting sunset procedure.")
                 t = 10
                 col = 1
                 color = mix_col(col)
                 sun_set(t, color)
-                print(demo_time)
-                print("Dark phase: closing curtains and starting sunset procedure.")
 
         elif day.get('sleep_time') + day.get('sleep_delta')/2 < demo_time < day.get('wake_time'):
             # The room must be LIT, open the curtains 20-30 min before the sunset
@@ -93,12 +115,13 @@ for day in my_schedule:
             # Turning on the lamps, they gradually become brighter
             if sunrise_flag:
                 sunrise_flag = False
+                print(demo_time)
+                print("Light phase: opening curtains and starting sunrise procedure.")
                 t = 10
                 col = 0
                 color = mix_col(col)
                 sun_rise(t, color)
-                print(demo_time)
-                print("Light phase: opening curtains and starting sunrise procedure.")
+
                 # TODO: if outside there's no sun or it's too strong just turn on the lamps
 # Obtaining sunrise and sunset time from the local time zone
 # today = date.today()
@@ -110,10 +133,12 @@ for day in my_schedule:
 
         if demo_time == day.get('wake_time'):
             # The user must wake up! Play alarm clock tone
-            stop_noise()
             print(demo_time)
             print("End of the sleep period. Stopping white noise. Playing alarm clock tone.")
+            stop_noise()
 
         sleep(0.001)
         demo_time += timedelta(seconds=1)
     n += 1
+    sleep(5)
+

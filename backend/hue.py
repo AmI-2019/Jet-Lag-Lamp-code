@@ -103,7 +103,8 @@ def switch_off():
         requests.put(url_to_call, json=body)
 
 
-def sun_set(t,color):
+def sun_set(t, color):
+    print("Starting the sunset procedure (40s)")
     # the base URL
     # base_url = 'http://192.168.0.201'
     # if you are using the emulator, probably the base_url will be:
@@ -135,13 +136,16 @@ def sun_set(t,color):
         switch_on(color, i)
         # wait 10 seconds...
         for k in range(0, t):
-            time.sleep(1)
-            print(t - k)
-        i = i - 50
+            time.sleep(0.02)
+            # print(t - k)
+        # i = i - 50
+        i -= 1
     switch_off()
+    print("Sunset procedure terminated.")
 
 
-def sun_rise(t,color):
+def sun_rise(t, color):
+    print("Starting the sunrise procedure (40s)")
     # the base URL
     # base_url = 'http://192.168.0.201'
     # if you are using the emulator, probably the base_url will be:
@@ -162,10 +166,11 @@ def sun_rise(t,color):
         switch_on(color, i)
         # wait 10 seconds...
         for k in range(0, t):
-            time.sleep(1)
-            print(t - k)
-        i = i + 50
-    switch_on(color, intensity)
+            time.sleep(0.02)
+            # print(t - k)
+        i += 1
+        # i = i + 50
+    switch_on(color, i)
     """
     for i in range(1,250,50):
         switch_on(color, i)
@@ -176,6 +181,7 @@ def sun_rise(t,color):
         if i>=200:
             switch_on(color,250)
     """
+    print("Sunrise procedure terminated.")
 
 
 def mix_col(col):
@@ -191,7 +197,6 @@ def mix_col(col):
 
 
 # hue : yellow = 25500 / blue=46920 / red= 0/
-
 
 if __name__ == '__main__':
     col = 0
