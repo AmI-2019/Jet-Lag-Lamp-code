@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title> Delivrable 1</title>
+		<meta name="author" content="Marion Durafour, Fabio Baldo, Vincent Gautier">
+		<style>
+			body {
+				background: lightblue;
+				color: black;
+			}
+			h1 {
+			text-align: center;
+			padding: 8px;
+			color: red;
+			}
+			
+			h2 {
+			text-align: center;
+			padding: 5px;
+			}
+			p {
+			text-align: center;
+			}
+			table {
+    				border-collapse: collapse; 
+			}
+			td,th {
+    				border: 1px solid black; 
+				text-align:center;
+			}
+			nav{
+				text-align:center;
+			}
+
+			#ing{
+    				padding-bottom: 5px;
+    				text-align: center;
+   				padding-top: 15px;
+    				margin: left;
+			}
+			ul {
+				
+				
+				display:inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		<h1> The Jet Lag Lamp -Délivrable 1-</h1>
+	<div id="ing">
+		<ul>
+			<li> Project name: <strong>The Jet Lag Lamp</strong></li>
+			<li> Project acronim: Jet-Lag-Lamp</li>
+			<li> Github page: https://github.com/AmI-2019/Jet-Lag-Lamp</li>
+		</ul>
+</div>
+		<h2>Group members</h2>
+					<table border align="center">
+				<tr>
+					<th> ID (matricola)</th>
+					<th> Last Name</th>
+					<th>First Name</th>
+					<th>email</th>
+					<th>GitHub</th>
+					<th>Role in the project</th>
+				</tr>
+				<tr>
+					<td>266900</td>
+					<td>Durafour</td>
+					<td>Marion</td>
+					<td>s266900@studenti.polito.it</td>
+					<td>Mariondurafour</td>
+					<td>SW developer</td>
+				</tr>
+				<tr>
+					<td>s235527</td>
+					<td>Baldo</td>
+					<td>Fabio</td>
+					<td>s235527@studenti.polito.it</td>
+					<td>FabioBaldo17</td>
+					<td>HW developer</td>
+				</tr>
+				<tr>
+					<td>s267144</td>
+					<td>Gautier</td>
+					<td>Vincent</td>
+					<td>s267144@studenti.polito.it</td>
+					<td>VincentGautier</td>
+					<td>SW/HW developer</td>
+				</tr>
+				<tr>
+					<td>s234845</td>
+					<td>Bugliarelli</td>
+					<td>Alessandro</td>
+					<td>s234845@studenti.polito.it</td>
+					<td>Bugliaa</td>
+					<td>SW/HW developer</td>
+				</tr>
+			</table>
+
+			<h2>Vision statement</h2>
+		<p>Jet lag is a common problem for many travelers and for many workers in the world. This AmI can help to ease the change of circadian rhythm.</p>
+		<p>The systeme will be used in hotel's rooms. It will help the customer of the hotel room to find the best time to sleep in order to minimize the effects of the jet lag. Here we propose a solution which enables the user to sleep at a precise time and in the best conditions.</p>
+		<h2>AMI main steps</h2>
+			<table border align="center">
+				<tr>
+					<th>Ami step</th>
+					<th>Description</th>
+				</tr>
+				<tr>
+					<th>Sensing</th>
+					<td>The ami system is capable to use the data in the smartphone (google agenda,...) to know what are the obligations of the user. Some sensors (temperature and brightness) will be used to know when open/close the blinds or switch on/off the lights. </td>
+				</td>
+				<tr>
+					<th>Reasoning</th>
+					<td> The Ami system can calculate the circadian rythm of the user with some informations about his sleeping rythm. It can also read (receive) the user's appointments and give advices to the user in using the data collected from the smartphone.</td>
+				</tr>
+				<tr>
+					<th>Acting</th>
+					<td>The Ami system is capable to switch on/off the lights, open/close the blinds, give advice to the user with a microphone, a telegram bot or a notification.</td>
+				</tr>
+				<tr>
+					<th>Interacting</th>
+					<td>The system can give advices to the user for his schedule, suggest some naps to the user during the day, ask feedback to the user.</td>
+				</tr>
+
+			</table>
+
+
+	<h2>AMI features</h2>
+			<table border align="center">
+				<tr>
+					<th>Ami step</th>
+					<th>Description</th>
+				</tr>
+				<tr>
+					<th>Sensitive</th>
+					<td>The Ami system can know if the user is inside the hotel room or not. If he is inside, it can collect data from his smartphone to advice him.</td>
+				</td>
+				<tr>
+					<th>Reasponsive</th>
+					<td>If the system calculate that the user needs to sleep, it will advice him to take a break. The user can refuse but if he accepts, the system will calculate the time that he needs to sleep and fix the alarm. It will also close the blinds and switch off the lights.</td>
+				</tr>
+				<tr>
+					<th>Adaptive</th>
+					<td>The system will ask to the user some informations about his sleep to calculate the best way how long he needs to sleep and when.</td>
+				</tr>
+				<tr>
+					<th>Transparent</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Ubiquitous</th>
+					<td></td>
+				</tr>
+				<tr>
+					<th>Intelligent</th>
+					<td>Ce system will be intelligent because it will store the data of every users that will come to the hotel room into a database. If a user is used to come in a this hotel, we do not have to ask him again all the information</td>
+				</tr>
+			</table>
+
+		
+		<h2>Open issues</h2>
+			<p>
+
+				To suceed in doing this project, we will need to get access to the smartphone of the user especially we will use the google agenda and the alarm menu. After that, we need to calculate, thanks to the data given by the user, the best way for him to sleep and to accustom himself to the circadian rhythm of the region. We will need to use bluetooth or wifi technologie to control the lamps of the room and the blinders. We will also use a telegram bot, notifications of the phone or a microphone to interract with the user.</p>
+	</body>
+</html>
+	

@@ -1,0 +1,76 @@
+url: https://github.com/VincentGautier/Hotel-web-site/
+baseurl:
+
+# Site settings
+title: The Lag Hotel
+email: your-email@domain.com
+description: "PoliTo Ambient Intelligence 2018/19"
+
+
+# Team names, titles and social links
+people:
+- name: Marion Durafour
+  pic: 1
+  position: SW developer
+  social:
+    - title: github
+      url: https://github.com/Mariondurafour
+    - title: facebook
+      url: #
+    - title: envelope-o
+      url: mailto:s266900@studenti.polito.it
+
+- name: Fabio Baldo
+  pic: 2
+  position: HW developer
+  social:
+    - title: github
+      url: https://github.com/FabioBaldo17
+    - title: facebook
+      url: #
+    - title: envelope-o
+      url: mailto:s235527@studenti.polito.it
+
+- name: Vincent Gautier
+  pic: 3
+  position: SW/HW developer
+  social:
+    - title: github
+      url: https://github.com/VincentGautier
+    - title: facebook
+      url: #
+    - title: envelope-o
+      url: mailto:s267144@studenti.polito.it
+
+- name: Alessandro Bugliarelli
+  pic: 4
+  position: SW/HW developer
+  social:
+    - title: github
+      url: https://github.com/Bugliaa
+    - title: facebook
+      url: #
+    - title: envelope-o
+      url: mailto:s234845@studenti.polito.it
+
+# Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
+social:
+  - title: twitter
+    url: http://twitter.com/jekyllrb
+  - title: facebook
+    url:
+  - title: stack-overflow
+    url: http://stackoverflow.com/questions/tagged/jekyll
+  - title: bitbucket
+    url: http://bitbucket.org/jekyll
+  - title: github
+    url: https://github.com/AmI-2019/Jet-Lag-Lamp-code
+
+# Postal address (add as many lines as necessary)
+address:
+  - line: 3481 Melrose Place
+  - line: Beverly Hills, CA 90210
+
+# Build settings
+markdown: kramdown
+permalink: pretty
