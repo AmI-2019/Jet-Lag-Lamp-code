@@ -70,9 +70,9 @@ for day in my_schedule:
         if day.get('sleep_time') < demo_time < day.get('sleep_time') + day.get('sleep_delta')/2:
             # The room must be DARK
             # Closing the curtains
-            if opened_curtains:
-                opened_curtains = False
-                shut_down()
+            # if opened_curtains:
+            #     opened_curtains = False
+            #     shut_down()
             # Dimming the lamps until they turn off
             if sunset_flag:
                 sunset_flag = False
@@ -87,9 +87,9 @@ for day in my_schedule:
             # The room must be LIT, open the curtains 20-30 min before the sunset
             # Turn on Philips Hue --> start sunset procedure
             # Opening curtains
-            if opened_curtains == False:
-                opened_curtains = True
-                op_en()
+            # if opened_curtains == False:
+            #     opened_curtains = True
+            #     op_en()
             # Turning on the lamps, they gradually become brighter
             if sunrise_flag:
                 sunrise_flag = False
