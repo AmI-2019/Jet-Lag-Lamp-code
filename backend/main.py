@@ -70,10 +70,13 @@ for day in my_schedule:
 
         if day.get('sleep_time') < demo_time < day.get('sleep_time') + day.get('sleep_delta')/2:
             # The room must be DARK
+
             print("HELLO DARKNESS")
 
         elif day.get('sleep_time') + day.get('sleep_delta')/2 < demo_time < day.get('wake_time'):
             # The room must be LIT, open the curtains 20-30 min before the sunset
+            # Turn on Philips Hue --> start sunset procedure
+            # use a flag like activate_noise
             print("HELLO LIGHT")
 
         if demo_time == day.get('wake_time'):

@@ -55,7 +55,7 @@ def switch_on(color, intensity):
     # username = "-yBmYpKxa2bMpOgle8ZOFBodBuruXHvvQPagKHQI"
     # if you are using the emulator, the username is:
     username = 'newdeveloper'      #use with the emulator
-    light = "12"  # number of the light we are using
+    # light = "12"  # number of the light we are using
     # lights URL
     lights_url = base_url + '/api/' + username + '/lights/'
 
@@ -63,14 +63,14 @@ def switch_on(color, intensity):
     all_the_lights = requests.get(lights_url).json()
     if type(all_the_lights) is dict:
         # iterate over the Hue lights, turn them on with the color loop effect
-        # for light in all_the_lights:           #activate this loop to switch all lights
-        url_to_call = lights_url + light + '/state'
-        # body = {'on': True, 'effect': 'colorloop'}
-        # to set the red color
-        # body = {'on': True, "hue": color, "bri": intensity}
-        body = {'on': True, "xy": color, "bri": intensity}
-        # more colors: https://www.developers.meethue.com/documentation/core-concepts
-        requests.put(url_to_call, json=body)
+        for light in all_the_lights:           #activate this loop to switch all lights
+            url_to_call = lights_url + light + '/state'
+            body = {'on': True, 'effect': 'colorloop'}
+            # to set the red color
+            # body = {'on': True, "hue": color, "bri": intensity}
+            # body = {'on': True, "xy": color, "bri": intensity}
+            # more colors: https://www.developers.meethue.com/documentation/core-concepts
+            requests.put(url_to_call, json=body)
     else:
         print('Error:', all_the_lights[0]['error'])
 
@@ -85,16 +85,16 @@ def switch_off():
     # username = "-yBmYpKxa2bMpOgle8ZOFBodBuruXHvvQPagKHQI"
     # if you are using the emulator, the username is:
     username = 'newdeveloper'      #use with the emulator
-    light = "12"
+    # light = "12"
     # lights URL
     lights_url = base_url + '/api/' + username + '/lights/'
 
     # get the Hue lights (as JSON)
     all_the_lights = requests.get(lights_url).json()
-    # for light in all_the_lights:
-    url_to_call = lights_url + light + '/state'
-    body = {'on': False}
-    requests.put(url_to_call, json=body)
+    for light in all_the_lights:
+        url_to_call = lights_url + light + '/state'
+        body = {'on': False}
+        requests.put(url_to_call, json=body)
 
 
 def sun_set(t):
