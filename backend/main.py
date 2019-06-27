@@ -1,14 +1,37 @@
 from datetime import datetime, date, timedelta, time
 from time import sleep
+import pygame
+from threading import Thread
 from astral import Astral
 from sleep_schedule import init_schedule
-from play_whitenoise import play_noise, stop_noise
-from clock_demo import start_clock, stop_clock, demo_time
+from hue import switch_on, switch_off, sun_set, sun_rise, mix_col
 
-# print("BROWN NOISE OP")
-# play_noise()
 
 time_schedule = init_schedule()
+
+
+class WhiteNoise(Thread):
+    def __init__(self):
+        Thread.__init__(self)
+
+    def run(self):
+        pygame.mixer.init()
+        pygame.mixer.music.load("brownnoise.wav")
+        pygame.mixer.music.play(-1)
+        while pygame.mixer.music.get_busy():
+            continue
+
+    def stop(self):
+        pygame.mixer.music.fadeout(5000)
+
+
+def play_noise():
+    noise_thread.start()
+
+
+def stop_noise():
+    noise_thread.stop()
+    noise_thread.join()
 
 # Obtaining sunrise and sunset time from the local time zone
 # today = date.today()
@@ -19,7 +42,10 @@ time_schedule = init_schedule()
 # print("Sunset: " + str(sunset))
 
 # Processing the schedule --> room control
+
+
 my_schedule = []
+switch_on(5000, 254)
 for schedule in time_schedule:
     wake_time = datetime.strptime(schedule.get('wake_time'), "%d/%m/%Y %H:%M")
     sleep_time = datetime.strptime(schedule.get('sleep_time'), "%d/%m/%Y %H:%M")
@@ -27,17 +53,14 @@ for schedule in time_schedule:
     my_schedule.append({'sleep_time': sleep_time, 'wake_time': wake_time, 'sleep_delta': sleep_delta})
 
 n = 0
-print("STARTING FAKE TIME")
-
 for day in my_schedule:
-    # start_clock(my_schedule[1].get('wake_time'))
     demo_time = day.get('sleep_time')
     activate_noise = True
+    noise_thread = WhiteNoise()
     print("\nDay {}:".format(n))
     print("Sleep time: {}".format(datetime.strftime(day.get('sleep_time'), "%d/%m/%Y %H:%M")))
     print("Wake time: {}".format(datetime.strftime(day.get('wake_time'), "%d/%m/%Y %H:%M")))
     while demo_time <= day.get('wake_time'):
-
         if day.get('sleep_time') < demo_time < day.get('wake_time'):
             # The user is sleeping, play white noise if requested
             print("HELLO!!!")
@@ -62,12 +85,3 @@ for day in my_schedule:
         sleep(0.001)
         demo_time += timedelta(seconds=1)
     n += 1
-
-# Checking current time
-# TODO: define the STATES of the application, like 'the user is sleeping', 'sunset', 'sunrise' etc.
-# print(demo_time())
-# sleep(10)
-# print(demo_time())
-# stop_clock()
-# print(demo_time())
-stop_noise()
