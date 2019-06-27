@@ -97,7 +97,7 @@ def switch_off():
         requests.put(url_to_call, json=body)
 
 
-def sun_set(t):
+def sun_set(t,color):
     # the base URL
     base_url = 'http://192.168.0.201'
     # if you are using the emulator, probably the base_url will be:
@@ -135,7 +135,7 @@ def sun_set(t):
     switch_off()
 
 
-def sun_rise(t):
+def sun_rise(t,color):
     # the base URL
     #base_url = 'http://192.168.0.201'
     # if you are using the emulator, probably the base_url will be:
@@ -197,7 +197,7 @@ if __name__ == '__main__':
     # intensity :50
     #switch_off()
     switch_on(color, intensity)
-    #sun_set(t)
+    #sun_set(t,color)
 """"
     switch_off()
     sun_rise(t)

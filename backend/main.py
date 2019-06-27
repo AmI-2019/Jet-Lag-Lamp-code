@@ -5,6 +5,7 @@ from threading import Thread
 from astral import Astral
 from sleep_schedule import init_schedule
 from hue import switch_on, switch_off, sun_set, sun_rise, mix_col
+from blinders import shut_down,op_en,st_op
 
 
 time_schedule = init_schedule()
@@ -70,10 +71,19 @@ for day in my_schedule:
 
         if day.get('sleep_time') < demo_time < day.get('sleep_time') + day.get('sleep_delta')/2:
             # The room must be DARK
+            t = 10
+            col = 1
+            color = mix_col(col)
+            sun_set(t, color)
             print("HELLO DARKNESS")
 
         elif day.get('sleep_time') + day.get('sleep_delta')/2 < demo_time < day.get('wake_time'):
             # The room must be LIT, open the curtains 20-30 min before the sunset
+            op_en()
+            t = 10
+            col = 0
+            color = mix_col(col)
+            sun_rise(t, color)
             print("HELLO LIGHT")
 
         if demo_time == day.get('wake_time'):
