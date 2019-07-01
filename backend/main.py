@@ -39,6 +39,7 @@ def stop_noise():
     noise_thread.stop()
     noise_thread.join()
 
+# Time for the demonstration
 
 background_color = 'white'
 color = 'blue'
