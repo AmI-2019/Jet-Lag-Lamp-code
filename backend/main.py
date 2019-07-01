@@ -136,7 +136,7 @@ for day in my_schedule:
     # print("Sunrise: " + str(sunrise))
     # print("Sunset: " + str(sunset))
 
-        if demo_time == day.get('wake_time'):
+        if demo_time >= day.get('wake_time'):
             # The user must wake up! Play alarm clock tone
             print(demo_time)
             print("End of the sleep period. Stopping white noise. Playing alarm clock tone.")
