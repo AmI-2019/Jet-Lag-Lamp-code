@@ -32,8 +32,8 @@ def init_schedule():
 
     # Retrieving arrival location from db and getting corresponding time zone
     hotel_coord = fabio_dict.get('hotel_address')
-    latitude = hotel_coord.split(", ")[0]
-    longitude = hotel_coord.split(", ")[1]
+    latitude = hotel_coord.split(",")[0]
+    longitude = hotel_coord.split(",")[1]
     file = urllib.request.urlopen("http://api.timezonedb.com/v2.1/get-time-zone?key=DSZOYLMUORVL&format=xml&by=position&lat={}&lng={}".format(latitude, longitude))
     data = file.read()
     file.close()

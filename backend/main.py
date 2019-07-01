@@ -138,7 +138,7 @@ for day in my_schedule:
             stop_noise()
 
         sleep(0.001)
-        demo_time += timedelta(seconds=1)
+        demo_time += timedelta(seconds=2)
     n += 1
     sleep(5)
 
