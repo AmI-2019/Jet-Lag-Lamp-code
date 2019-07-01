@@ -39,6 +39,7 @@ def stop_noise():
     noise_thread.stop()
     noise_thread.join()
 
+
 # Time for the demonstration
 
 background_color = 'white'
@@ -76,10 +77,12 @@ for day in my_schedule:
     noise_thread = WhiteNoise()
     my_sleep = datetime.strftime(day.get('sleep_time'), "%d/%m/%Y %H:%M")
     my_wake = datetime.strftime(day.get('wake_time'), "%d/%m/%Y %H:%M")
+    my_sleeep = datetime.strftime(day.get('sleep_time'), "%H:%M")
+    my_waaake = datetime.strftime(day.get('wake_time'), "%H:%M")
     print("\nDay {}:".format(n))
     print("Sleep time: {}".format(my_sleep))
     print("Wake time: {}".format(my_wake))
-    set_time_db(my_sleep, my_wake)
+    set_time_db(my_sleeep, my_waaake)
     while demo_time <= day.get('wake_time'):
         tick()
         # root.mainloop()

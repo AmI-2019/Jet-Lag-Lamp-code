@@ -58,7 +58,7 @@ def init_schedule():
     # Retrieving the events
     events_list = []
     # for event in events_ref.stream():
-        # events_list.append(event.to_dict())
+    #     events_list.append(event.to_dict())
 
     # Calling the function that computes the sleeping schedule
     time_schedule = set_schedule(dep_zone, arr_zone, home_sleep_time, home_wake_time, events_list, trip_duration)
@@ -140,6 +140,9 @@ def set_schedule(dep_place, arr_place, home_sleep_time, home_wake_time, events_l
 
 
 def set_time_db(sleep_time, wake_time):
-    fabio_ref.document(u'todaySleepSchedule').set(sleep_time)
-    fabio_ref.document(u'tomorrowWakeUpSchedule').set(wake_time)
-    
+    data = {
+        u'todaySleepSchedule': sleep_time,
+        u'tomorrowWakeUpSchedule': wake_time
+    }
+    fabio_ref.update(data)
+
