@@ -29,4 +29,5 @@ if __name__ == '__main__':
     #time.sleep(4)
     # st_op()
     #time.sleep(10)
+#    shut_down()
     op_en()

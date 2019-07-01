@@ -56,7 +56,7 @@ def switch_on(color, intensity):
     username = "-yBmYpKxa2bMpOgle8ZOFBodBuruXHvvQPagKHQI"
     # if you are using the emulator, the username is:
     # username = 'newdeveloper'       # use with the emulator
-    # light = "12"  # number of the light we are using
+    light = "3"  # number of the light we are using
     # lights URL
     lights_url = base_url + '/api/' + username + '/lights/'
 
@@ -136,10 +136,10 @@ def sun_set(t, color):
         switch_on(color, i)
         # wait 10 seconds...
         for k in range(0, t):
-            time.sleep(0.002)
+            time.sleep(0.001)
             # print(t - k)
         # i = i - 50
-        i -= 5
+        i -= 10
     switch_off()
     print("Sunset procedure terminated.")
 
@@ -166,9 +166,9 @@ def sun_rise(t, color):
         switch_on(color, i)
         # wait 10 seconds...
         for k in range(0, t):
-            time.sleep(0.002)
+            time.sleep(0.001)
             # print(t - k)
-        i += 5
+        i += 10
         # i = i + 50
     switch_on(color, i)
     """

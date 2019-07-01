@@ -69,7 +69,7 @@ n = 0
 for day in my_schedule:
     demo_time = day.get('sleep_time')
     activate_noise = True
-    opened_curtains = False
+    opened_curtains = True
     sunrise_flag = True
     sunset_flag = True
     noise_thread = WhiteNoise()
@@ -78,7 +78,7 @@ for day in my_schedule:
     print("\nDay {}:".format(n))
     print("Sleep time: {}".format(my_sleep))
     print("Wake time: {}".format(my_wake))
-    set_time_db(my_sleep, my_wake)
+#    set_time_db(my_sleep, my_wake)
     while demo_time <= day.get('wake_time'):
         tick()
         # root.mainloop()
@@ -103,7 +103,7 @@ for day in my_schedule:
                 sunset_flag = False
                 print(demo_time)
                 print("Dark phase: closing curtains and starting sunset procedure.")
-                t = 10
+                t = 1
                 col = 1
                 color = mix_col(col)
                 sun_set(t, color)
@@ -120,7 +120,7 @@ for day in my_schedule:
                 sunrise_flag = False
                 print(demo_time)
                 print("Light phase: opening curtains and starting sunrise procedure.")
-                t = 10
+                t = 1
                 col = 0
                 color = mix_col(col)
                 sun_rise(t, color)
@@ -142,7 +142,7 @@ for day in my_schedule:
             stop_noise()
 
         sleep(0.001)
-        demo_time += timedelta(seconds=2)
+        demo_time += timedelta(seconds=5)
     n += 1
-    sleep(5)
+    sleep(2)
 
