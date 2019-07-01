@@ -13,16 +13,17 @@ import xmltodict
 # type datetime, while the third is a timedelta.
 
 
+# Initializing the connection to Cloud Firestore
+cred = credentials.Certificate("thejetlaglampapp-1-firebase-adminsdk-7oj9c-d795dc3925.json")
+default_app = firebase_admin.initialize_app(cred)
+db = firestore.client()
+fabio_ref = db.document(u'Users/fabio.baldo17@gmail.com')
+schedule_ref = db.collection(u'Users/fabio.baldo17@gmail.com/sleep_schedule')
+fabio = fabio_ref.get()
+fabio_dict = fabio.to_dict()
+    
+    
 def init_schedule():
-    # Initializing the connection to Cloud Firestore
-    cred = credentials.Certificate("thejetlaglampapp-1-firebase-adminsdk-7oj9c-d795dc3925.json")
-    default_app = firebase_admin.initialize_app(cred)
-    db = firestore.client()
-    fabio_ref = db.document(u'Users/fabio.baldo17@gmail.com')
-    schedule_ref = db.collection(u'Users/fabio.baldo17@gmail.com/sleep_schedule')
-    fabio = fabio_ref.get()
-    fabio_dict = fabio.to_dict()
-    events_list = []
 
     # Deleting previous sleeping time schedule
     n = 0
@@ -52,6 +53,8 @@ def init_schedule():
     home_sleep_time = datetime.strftime(home_sleep_time, "%d/%m/%Y %H:%M")
     home_wake_time = datetime.strftime(home_wake_time, "%d/%m/%Y %H:%M")
     trip_duration = int(fabio.to_dict().get('trip_duration'))
+    
+    events_list = []
 
     # Calling the function that computes the sleeping schedule
     time_schedule = set_schedule(dep_zone, arr_zone, home_sleep_time, home_wake_time, events_list, trip_duration)
