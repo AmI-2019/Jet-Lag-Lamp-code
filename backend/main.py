@@ -122,14 +122,15 @@ for day in my_schedule:
                 color = mix_col(col)
                 sun_rise(t, color)
 
-                # TODO: if outside there's no sun or it's too strong just turn on the lamps
-# Obtaining sunrise and sunset time from the local time zone
-# today = date.today()
-# astral = Astral()
-# sunrise = datetime.astimezone(astral.sunrise_utc(today, float(latitude), float(longitude)), timezone(arr_zone))
-# sunset = datetime.astimezone(astral.sunset_utc(today, float(latitude), float(longitude)), timezone(arr_zone))
-# print("Sunrise: " + str(sunrise))
-# print("Sunset: " + str(sunset))
+    # TODO: if outside there's no sun or it's too strong just turn on the lamps
+
+    # Obtaining sunrise and sunset time from the local time zone
+    # today = date.today()
+    # astral = Astral()
+    # sunrise = datetime.astimezone(astral.sunrise_utc(today, float(latitude), float(longitude)), timezone(arr_zone))
+    # sunset = datetime.astimezone(astral.sunset_utc(today, float(latitude), float(longitude)), timezone(arr_zone))
+    # print("Sunrise: " + str(sunrise))
+    # print("Sunset: " + str(sunset))
 
         if demo_time == day.get('wake_time'):
             # The user must wake up! Play alarm clock tone
