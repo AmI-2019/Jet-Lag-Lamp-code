@@ -6,7 +6,7 @@ import time
 import tkinter as tk
 from tkinter import *
 from astral import Astral
-from sleep_schedule import init_schedule
+from sleep_schedule import init_schedule, set_time_db
 from hue import switch_on, switch_off, sun_set, sun_rise, mix_col
 from blinders import shut_down, op_en, st_op
 
@@ -73,9 +73,12 @@ for day in my_schedule:
     sunrise_flag = True
     sunset_flag = True
     noise_thread = WhiteNoise()
+    my_sleep = datetime.strftime(day.get('sleep_time'), "%d/%m/%Y %H:%M")
+    my_wake = datetime.strftime(day.get('wake_time'), "%d/%m/%Y %H:%M")
     print("\nDay {}:".format(n))
-    print("Sleep time: {}".format(datetime.strftime(day.get('sleep_time'), "%d/%m/%Y %H:%M")))
-    print("Wake time: {}".format(datetime.strftime(day.get('wake_time'), "%d/%m/%Y %H:%M")))
+    print("Sleep time: {}".format(my_sleep))
+    print("Wake time: {}".format(my_wake))
+    set_time_db(my_sleep, my_wake)
     while demo_time <= day.get('wake_time'):
         tick()
         # root.mainloop()
@@ -122,14 +125,15 @@ for day in my_schedule:
                 color = mix_col(col)
                 sun_rise(t, color)
 
-                # TODO: if outside there's no sun or it's too strong just turn on the lamps
-# Obtaining sunrise and sunset time from the local time zone
-# today = date.today()
-# astral = Astral()
-# sunrise = datetime.astimezone(astral.sunrise_utc(today, float(latitude), float(longitude)), timezone(arr_zone))
-# sunset = datetime.astimezone(astral.sunset_utc(today, float(latitude), float(longitude)), timezone(arr_zone))
-# print("Sunrise: " + str(sunrise))
-# print("Sunset: " + str(sunset))
+    # TODO: if outside there's no sun or it's too strong just turn on the lamps
+
+    # Obtaining sunrise and sunset time from the local time zone
+    # today = date.today()
+    # astral = Astral()
+    # sunrise = datetime.astimezone(astral.sunrise_utc(today, float(latitude), float(longitude)), timezone(arr_zone))
+    # sunset = datetime.astimezone(astral.sunset_utc(today, float(latitude), float(longitude)), timezone(arr_zone))
+    # print("Sunrise: " + str(sunrise))
+    # print("Sunset: " + str(sunset))
 
         if demo_time == day.get('wake_time'):
             # The user must wake up! Play alarm clock tone

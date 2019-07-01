@@ -19,6 +19,7 @@ default_app = firebase_admin.initialize_app(cred)
 db = firestore.client()
 fabio_ref = db.document(u'Users/fabio.baldo17@gmail.com')
 schedule_ref = db.collection(u'Users/fabio.baldo17@gmail.com/sleep_schedule')
+events_ref = db.collection(u'Users/fabio.baldo17@gmail.com/events')
 fabio = fabio_ref.get()
 fabio_dict = fabio.to_dict()
     
@@ -53,8 +54,11 @@ def init_schedule():
     home_sleep_time = datetime.strftime(home_sleep_time, "%d/%m/%Y %H:%M")
     home_wake_time = datetime.strftime(home_wake_time, "%d/%m/%Y %H:%M")
     trip_duration = int(fabio.to_dict().get('trip_duration'))
-    
+
+    # Retrieving the events
     events_list = []
+    for event in events_ref.stream():
+        events_list.append(event.to_dict())
 
     # Calling the function that computes the sleeping schedule
     time_schedule = set_schedule(dep_zone, arr_zone, home_sleep_time, home_wake_time, events_list, trip_duration)
@@ -133,3 +137,8 @@ def set_schedule(dep_place, arr_place, home_sleep_time, home_wake_time, events_l
         i += 1
 
     return time_list
+
+
+def set_time_db(sleep_time, wake_time):
+    fabio_ref.document(u'todaySleepSchedule').set(sleep_time)
+    fabio_ref.document(u'tomorrowWakeUpSchedule').set(wake_time)
