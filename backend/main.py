@@ -78,7 +78,7 @@ for day in my_schedule:
     print("\nDay {}:".format(n))
     print("Sleep time: {}".format(my_sleep))
     print("Wake time: {}".format(my_wake))
-#    set_time_db(my_sleep, my_wake)
+    set_time_db(my_sleep, my_wake)
     while demo_time <= day.get('wake_time'):
         tick()
         # root.mainloop()

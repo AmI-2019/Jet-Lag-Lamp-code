@@ -1,6 +1,5 @@
 import socket
 import time
-# 2 put the blind down, 1 put it up, 0 stop it
 
 
 def shut_down():
@@ -25,9 +24,9 @@ def st_op():
 
 
 if __name__ == '__main__':
-    #shut_down()
-    #time.sleep(4)
+    # shut_down()
+    # time.sleep(4)
     # st_op()
-    #time.sleep(10)
-#    shut_down()
+    # time.sleep(10)
+    # shut_down()
     op_en()

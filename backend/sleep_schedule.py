@@ -140,6 +140,6 @@ def set_schedule(dep_place, arr_place, home_sleep_time, home_wake_time, events_l
 
 
 def set_time_db(sleep_time, wake_time):
-#    fabio_ref.document(u'todaySleepSchedule').set(sleep_time)
-#    fabio_ref.document(u'tomorrowWakeUpSchedule').set(wake_time)
-    print('fuk')
+    fabio_ref.document(u'todaySleepSchedule').set(sleep_time)
+    fabio_ref.document(u'tomorrowWakeUpSchedule').set(wake_time)
+    
