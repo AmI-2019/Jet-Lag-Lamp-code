@@ -25,8 +25,8 @@ def st_op():
 
 
 if __name__ == '__main__':
-    shut_down()
-    time.sleep(4)
+    #shut_down()
+    #time.sleep(4)
     # st_op()
-    time.sleep(10)
+    #time.sleep(10)
     op_en()
