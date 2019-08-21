@@ -14,7 +14,7 @@ import xmltodict
 
 
 # Initializing the connection to Cloud Firestore
-cred = credentials.Certificate("thejetlaglampapp-1-firebase-adminsdk-7oj9c-d795dc3925.json")
+cred = credentials.Certificate("")#ADD KEY HERE")
 default_app = firebase_admin.initialize_app(cred)
 db = firestore.client()
 fabio_ref = db.document(u'Users/fabio.baldo17@gmail.com')
